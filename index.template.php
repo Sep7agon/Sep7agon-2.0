@@ -112,39 +112,39 @@ echo '<head>';
 		.b_index {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_index.png") no-repeat left top;
 		}
-		
+
 		.b_flood {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_flood.png") no-repeat left top;
 		}
-		
+
 		.b_serious {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_serious.png") no-repeat left top;
 		}
-		
+
 		.b_gaming {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_gaming.png") no-repeat left top;
 		}
-		
+
 		.b_support {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_support.png") no-repeat left top;
 		}
-		
+
 		.b_updates {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_updates.png") no-repeat left top;
 		}
-		
+
 		.b_art {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_art.png") no-repeat left top;
 		}
-		
+
 		.b_anarchy {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_rapture.png") no-repeat left top;
 		}
-		
+
 		.b_hq {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_hq.png") no-repeat left top;
 		}
-		
+
 		.banner {
 			text-decoration: none;
 			width: 100%;
@@ -153,7 +153,7 @@ echo '<head>';
 			padding: auto;
 			float: left;
 		}
-		
+
 		.banner:hover {
 			text-decoration: none;
 		}
@@ -166,7 +166,7 @@ echo '<head>';
 			background-image: url("'.$settings['theme_url'].'/images/alerts/alerts-inactive.png");
 		}
 
-		/* 	-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+		/* 	-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 			-=-=-=-=- Board Settings END -=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=- */
 	</style>';
 
@@ -184,7 +184,7 @@ echo '<head>';
 	if ($context['right_to_left'])
 		echo '
 	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/rtl.css" />';
-	
+
 	// Here comes the JavaScript bits!
 	echo '
 	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/script.js"></script>
@@ -212,7 +212,7 @@ echo '<head>';
 		$pagetitle = 'Sep7agon | ' . $outputphrase;
 	else
 		$pagetitle = $context['page_title_html_safe'];
-	
+
 	echo '
 	<meta http-equiv="Content-Type" content="text/html; charset=', $context['character_set'], '" />
 	<meta name="description" content="', $context['page_title_html_safe'], '" />', !empty($context['meta_keywords']) ? '
@@ -288,9 +288,9 @@ if ($context['current_topic'] >= 1)
 	$isthread = 'true';
 else
 	$isthread = 'false';
-	
+
 $anarchy = false;
-	
+
 // Header, and logo
 echo '
 	<div id="container">
@@ -307,7 +307,7 @@ echo '
 				$banner='b_index';
 				$b_href= $boardurl;
 			}
-			
+
 			// News
 			echo '<li><a';
 			if ($context['current_board'] == 5) {
@@ -316,7 +316,7 @@ echo '
 				$banner='b_updates';
 			}
 			echo ' href="',$boardurl,'/index.php?board=5.0">News</a></li>';
-			
+
 			// The Flood
 			echo '<li><a';
 			if ($context['current_board'] == 1) {
@@ -325,7 +325,7 @@ echo '
 				$banner='b_flood';
 			}
 			echo ' href="',$boardurl,'/index.php?board=1.0">The Flood</a></li>';
-			
+
 			// Serious
 			echo '<li><a';
 			echo '<span class="forummenu"><a';
@@ -335,7 +335,7 @@ echo '
 				$banner='b_serious';
 			}
 			echo ' href="',$boardurl,'/index.php?board=6.0">Serious</a></span>';
-			
+
 			// Gaming
 			echo '<li><a';
 			if ($context['current_board'] == 4) {
@@ -344,7 +344,7 @@ echo '
 				$banner='b_gaming';
 			}
 			echo ' href="',$boardurl,'/index.php?board=4.0">Gaming</a></li>';
-			
+
 			// Anarchy
 
 			if ($context['user']['is_logged'] && $anarchy || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']) || in_array(69,$user_info['groups'])) {
@@ -357,7 +357,7 @@ echo '
 				}
 				echo ' href="',$boardurl,'/index.php?board=8.0">Anarchy</a></li>';
 			}
-			
+
 			// Septagon
 			echo '<li><a';
 			if ($context['current_board'] == 3) {
@@ -366,7 +366,7 @@ echo '
 				$banner='b_support';
 			}
 			echo ' href="',$boardurl,'/index.php?board=3.0">Septagon</a></li>';
-			
+
 			// HQ
 			if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups'])) {
 				echo '<li><a';
@@ -409,7 +409,7 @@ echo '
 			$showNotifications = false;
 			$showAvatar = false;
 		}
-		
+
 		echo '
 		<div id="userInfoPane">';
 		if($showNotifications) {
@@ -429,7 +429,11 @@ echo '
 				});
 
 				$(\"#avatarControls\").mouseleave(function () {
+<<<<<<< HEAD
+
+=======
 					
+>>>>>>> FETCH_HEAD
 				});
 
 				function showAvatarMenu() {
