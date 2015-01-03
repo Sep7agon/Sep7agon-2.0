@@ -1,4 +1,9 @@
 <?php
+
+// Current version
+global $forumVersion;
+$forumVersion = "2.0.1i";
+
 // Initialize the template... mainly little settings.
 function template_init()
 {
@@ -41,7 +46,7 @@ function template_init()
 // The main sub template above the content.
 function template_html_above()
 {
-	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl;
+	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl, $forumVersion;
 
 	// Show right to left and the character set for ease of translating.
 	echo '<!doctype html>
@@ -58,7 +63,7 @@ function template_html_above()
      \__/
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1i]=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V '.$forumVersion.']=-=-=-=-
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 -->
 <html lang="en"', $context['right_to_left'] ? ' dir="rtl"' : '', '>';
@@ -280,7 +285,7 @@ include_once("analyticstracking.php");
 
 function template_body_above()
 {
-	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl, $user_info;
+	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl, $user_info, $forumVersion;
 	//echo $context['tapatalk_body_hook'];
 
 if ($context['current_topic'] >= 1)
@@ -289,15 +294,19 @@ else
 	$isthread = 'false';
 
 $anarchy = true;
+$forumDev = true;
 
 // Header, and logo
 echo '
 	<div id="container">
 	<header>
 		<div id="headerContainer">
+
+
 			<div id="branding">
 				<a href="'.$boardurl.'">sep7agon</a>
 			</div>';
+
 			// Navigation
 			echo '
 		<nav>
@@ -507,10 +516,20 @@ echo '
 				} echo '
 			</ul>';
 		}
-		echo '</div>';
+		echo '</div>
+		</div>';
+		if ($forumDev) {
+			echo '
+						<div id="forumTestVersion">
+							<div id="forumTestVersionWrap">
+								<p>DEV. '.$forumVersion.'</p>
+							</div>
+						</div>
+					';
+		}
 		echo '
-		</div>
 	</header>';
+
 	echo '
     <script type="text/javascript">
         $(document).ready(function () {
@@ -613,6 +632,7 @@ echo '
 				echo '<p class="description_board">', $context['description'], '</p>';
 			// Show the navigation tree.
 			theme_linktree();
+
 }
 
 function hasMessages() {
