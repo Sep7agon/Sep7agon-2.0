@@ -125,6 +125,7 @@ a:link, a:visited, a:active {
     font-family: 'Play', sans-serif;
     text-transform: uppercase;
     border-right: 1px solid rgba(60, 60, 60, 0.31);
+    padding-left: 1px;
 }
 
 #headerContainer nav ul, #headerContainer nav ol {
@@ -161,8 +162,6 @@ a:link, a:visited, a:active {
 #headerContainer #searchTool {
     float: left;
     height: 50px;
-    margin: 0 0 0 15px;
-    padding-right: 15px;
     border-right: 1px solid rgba(60, 60, 60, 0.31);
 }
 
@@ -172,33 +171,38 @@ a:link, a:visited, a:active {
 }
 
 #headerContainer #searchTool form input[type=text] {
+    display: none;
     float: left;
-    background: -moz-linear-gradient(top,  rgba(25,25,25,0.1) 0%, rgba(25,25,25,0.1) 1%, rgba(32,32,32,0.25) 50%,
-    rgba(40,40,40,0.25) 98%, rgba(40,40,40,0.25) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(25,25,25,0.1)), color-stop(1%,
-    rgba(25,25,25,0.1)), color-stop(50%,rgba(32,32,32,0.25)), color-stop(98%,rgba(40,40,40,0.25)), color-stop(100%,
-    rgba(40,40,40,0.25))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(25,25,25,0.1) 0%,rgba(25,25,25,0.1) 1%,rgba(32,32,32,0.25) 50%,
-    rgba(40,40,40,0.25) 98%,rgba(40,40,40,0.25) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(25,25,25,0.1) 0%,rgba(25,25,25,0.1) 1%,rgba(32,32,32,0.25) 50%,
-    rgba(40,40,40,0.25) 98%,rgba(40,40,40,0.25) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(25,25,25,0.1) 0%,rgba(25,25,25,0.1) 1%,rgba(32,32,32,0.25) 50%,
-    rgba(40,40,40,0.25) 98%,rgba(40,40,40,0.25) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(25,25,25,0.1) 0%,rgba(25,25,25,0.1) 1%,rgba(32,32,32,0.25) 50%,
-    rgba(40,40,40,0.25) 98%,rgba(40,40,40,0.25) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a191919', endColorstr='#40282828',
-    GradientType=0 ); /* IE6-9 */
+    position: fixed;
     color: #666;
-    height: 25px;
-    padding: 5px;
+    height: 50px;
+    padding: 0 10px;
+    margin: 0 0 0 -146px;
     font: normal 12px Arial, sans-serif;
+    background: -moz-linear-gradient(top,  rgba(25,25,25,0.92) 0%,
+    rgba(5,5,5,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom,
+    color-stop(0%,rgba(25,25,25,0.92)), color-stop(100%,rgba(5,5,5,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(25,25,25,0.92) 0%,
+    rgba(5,5,5,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(25,25,25,0.92) 0%,
+    rgba(5,5,5,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(25,25,25,0.92) 0%,
+    rgba(5,5,5,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(25,25,25,0.92) 0%,
+    rgba(5,5,5,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb191919',
+    endColorstr='#050505',GradientType=0 ); /* IE6-9 */
+    -webkit-box-shadow: -8px 0 5px 0 rgba(0,0,0,0.6);
+    box-shadow: -8px 0 5px 0 rgba(0,0,0,0.6);
 }
 
 #headerContainer #searchTool form input[type=submit] {
     background: rgba(0, 0, 0, 0.56) url('../img/icon-search.png') no-repeat center;
     float: right;
-    height: 35px;
-    padding: 5px 15px;
+    height: 50px;
+    padding: 5px 20px;
+    margin: 0;
 }
 
 #headerContainer #searchTool form input[type=text]:hover, #headerContainer #searchTool form input[type=submit]:hover {
@@ -407,6 +411,14 @@ a.editProfile:hover {
     display: block;
 }
 
+ul.dropit-submenu, #avatarToolbar {
+    margin-left: -180px !important;
+}
+
+#alerts {
+    margin-left: -190px !important;
+}
+
 /* Dropit overrides (JS addon for quick and neat drop down menus */
 
 ul.dropit-submenu {
@@ -444,8 +456,9 @@ ul.dropit-submenu li a:hover {
 
 #NotLoggedIn {
     display: none;
-    width: 160px;
-    padding-top: 8px;
+    width: 220px;
+    padding: 0;
+    margin: 15px -10px;
 }
 
 #headerContainer #userControls #NotLoggedIn,

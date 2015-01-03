@@ -2,7 +2,7 @@
 
 // Current version
 global $forumVersion;
-$forumVersion = "2.0.1i";
+$forumVersion = "2.1.0";
 
 // Initialize the template... mainly little settings.
 function template_init()
@@ -293,7 +293,7 @@ if ($context['current_topic'] >= 1)
 else
 	$isthread = 'false';
 
-$anarchy = true;
+$anarchy = false;
 $forumDev = true;
 
 // Header, and logo
@@ -392,8 +392,8 @@ echo '
 		echo '
 		<div id="searchTool">
 			<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '">
-				<input type="text" name="search" placeholder="Search…" />
-				<input type="submit" value="" />';
+				<input id="searchTextfield" type="text" name="search" placeholder="Search…" />
+				<input id="searchMag" type="submit" value="" />';
 				// Search within current topic?
 				if (!empty($context['current_topic']))
 				echo '
@@ -542,14 +542,17 @@ echo '
             */
 
             if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length > 5) {
-            	$("#navMenu li").css("padding", "0px 14px");
+            	$("#navMenu li").css("padding", "0px 26px");
             } else if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length == 5) {
-            	$("#navMenu li").css("padding", "0px 19px");
+            	$("#navMenu li").css("padding", "0px 36px");
             } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length > 5) {
-            	$("#navMenu li").css("padding", "0px 5px");
+            	$("#navMenu li").css("padding", "0px 22px");
             } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length > 5) {
-            	$("#navMenu li").css("padding", "0px 7px");
+            	$("#navMenu li").css("padding", "0px 18px");
+            } else if ($("#userControls ul li.menuOption").length == 0) {
+            	$("#navMenu li").css("padding", "0px 25px");
             }
+
 
             $(\'#usrCommandMenu\').dropit({action: \'hover\'});
 
@@ -583,11 +586,29 @@ echo '
 
             // Have quick reply ready by default
             oQuickReply.swap();
-
 		});
 
+		var searchTimeOut;
+
+		// The searchbar...
+         $("input#searchMag").mouseenter(function () {
+            $("#searchTextfield").show();
+          });
+
+         $("input#searchMag").mouseleave(function () {
+            searchTimeOut = window.setTimeout(function () { $("#searchTextfield").hide() }, 500);
+          });
+
+          // window.clearTimeout(timeOut)
+          $("input#searchTextfield").mouseenter(function () {
+            window.clearTimeout(searchTimeOut)
+          });
+
+         $("input#searchTextfield").mouseleave(function () {
+            $("#searchTextfield").hide();
+          });
     </script>';
-	
+
 	echo '
 <div class="spacemaker">&nbsp;</div>
 		<div id="wrapper">';
