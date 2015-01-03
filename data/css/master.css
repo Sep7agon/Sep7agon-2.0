@@ -235,7 +235,7 @@ a:link, a:visited, a:active {
 
 #headerContainer #userInfoPane #avatar {
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center;
     background-size: 40px;
     background-origin: border-box;
     width: 40px;
@@ -257,12 +257,12 @@ a:link, a:visited, a:active {
 
 #avatarToolbar {
     width: 245px;
-    height: 300px;
     background-color: rgba(10, 10, 10, 0.9);
     border: 1px solid rgba(135, 135, 135, 0.2);
     position: fixed;
     top: 52px;
-    /* display: none; */
+    padding-bottom: 20px;
+    display: none;
 }
 
 #avatarToolbar #avatarBig {
@@ -276,7 +276,7 @@ a:link, a:visited, a:active {
 #avatarToolbar h4 {
     padding: 10px 5px;
     float: left;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 #avatarToolbar p {
@@ -346,6 +346,7 @@ a.editProfile:hover {
     padding-left: 10px;
     font-size: 16px;
 }
+
 
 /* User controls (Options or guest message) */
 
@@ -420,18 +421,19 @@ ul.dropit-submenu li a:hover {
 
 #NotLoggedIn {
     display: none;
+    width: 160px;
+    padding-top: 5px;
 }
 
 #headerContainer #userControls #NotLoggedIn,
 #headerContainer #userControlsSmall #NotLoggedIn {
     height: 50px;
     float: left;
-    line-height: 48px;
     color: #666;
 }
 
 #headerContainer #userControlsSmall #NotLoggedIn {
-    line-height: 1.2em;
+    line-height: 5em;
     width: 200px;
     padding-top: 10px;
     padding-left: 10px;
@@ -714,10 +716,14 @@ div.title_barIC, div.title_barIC h4.titlebg, .titlebg, .titlebg2, tr.titlebg th,
     background: rgba(10, 10, 10, 0.2);
 }
 
+/* Board description override */
+
 .description_board {
     background: rgba(30, 30, 30, 0.3);
     border: 1px solid rgba(40, 40, 40, 0.5);
     margin: 5px 0.4em;
+    margin: 5px 0.4em 0px;
+    border-bottom: medium none !important;
 }
 
 /* Avatar 'padding' override */
@@ -789,6 +795,33 @@ textarea {
 
 .like_post_box, .like_unlike_link {
     position: inherit;
+}
+
+/* Navigation tree override */
+
+.navigate_section {
+    padding: 0 0.39em;
+}
+
+#sp_center .navigate_section ul {
+    background: none;
+    border: none;
+    display: none;
+}
+
+.navigate_section ul li.last {
+    background: rgba(50, 50, 50, 0.4);
+    padding-left: 5px;
+}
+
+.navigate_section ul {
+    background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.2);
+    height: 20px;
+    border: 1px solid rgba(50, 50, 50, 0.4);
+}
+
+.navigate_section ul li:first-child {
+    margin-left: 10px;
 }
 
 

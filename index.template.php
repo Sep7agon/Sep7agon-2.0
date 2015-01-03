@@ -58,7 +58,7 @@ function template_html_above()
      \__/
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1g]=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1h]=-=-=-=-
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 -->
 <html lang="en"', $context['right_to_left'] ? ' dir="rtl"' : '', '>';
@@ -170,25 +170,24 @@ echo '<head>';
 			-=-=-=-=- Board Settings END -=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=- */
 	</style>';
 
-	// The ?fin20 part of this link is just here to make sure browsers don't cache it wrongly.
 	echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin20" />';
+	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/data/css/index', $context['theme_variant'], '.css?',date('ddmmyyyytt'),'" />';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
 		if ($context['browser']['is_' . $cssfix])
 			echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['default_theme_url'], '/css/', $cssfix, '.css" />';
+	<link rel="stylesheet" type="text/css" href="', $settings['default_theme_url'], '/css/', $cssfix, '.css?',date('ddmmyyyytt'),'" />';
 
 	// RTL languages require an additional stylesheet.
 	if ($context['right_to_left'])
 		echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/rtl.css" />';
+	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/data/css/rtl.css?',date('ddmmyyyytt'),'" />';
 
 	// Here comes the JavaScript bits!
 	echo '
-	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/script.js"></script>
-	<script type="text/javascript" src="', $settings['theme_url'], '/scripts/theme.js"></script>
+	<script type="text/javascript" src="', $settings['default_theme_url'], 'scripts/script.js"></script>
+	<script type="text/javascript" src="', $settings['theme_url'], '/data/scripts/theme.js"></script>
 	<script type="text/javascript"><!-- // --><![CDATA[
 		var smf_theme_url = "', $settings['theme_url'], '";
 		var smf_default_theme_url = "', $settings['default_theme_url'], '";
@@ -289,7 +288,7 @@ if ($context['current_topic'] >= 1)
 else
 	$isthread = 'false';
 
-$anarchy = false;
+$anarchy = true;
 
 // Header, and logo
 echo '
@@ -483,6 +482,27 @@ echo '
 			';
 		} else {
 			//template_menu();
+			echo '
+			<ul>';
+				echo '
+				<li><img src="'.$settings['theme_url'].'/data/img/mail.png" /></li>';
+
+				if ($context['user']['is_admin']) {
+					echo '
+					<li><img style="padding-top: 15px;" src="'.$settings['theme_url'].'/data/img/tadmin.png" />';
+
+					echo '
+					</li>';
+				}
+
+				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups'])) {
+					echo '
+					<li><img style="padding-top: 15px;" src="'.$settings['theme_url'].'/data/img/tblox.png" />';
+
+					echo '
+					</li>';
+				} echo '
+			</ul>';
 		}
 		echo '</div>';
 		echo '
@@ -505,8 +525,10 @@ echo '
             }
             */
 
-            if ($(\'#navMenu li\').length > 6) {
-                $(\'#NotLoggedIn\').css("width", "160px");
+            if ($("#userControls ul li").length == 1 && $("#navMenu li").length > 5) {
+            	$("#navMenu li").css("padding", "0px 14px");
+            } else if ($("#userControls ul li").length == 1 && $("#navMenu li").length == 5) {
+            	$("#navMenu li").css("padding", "0px 19px");
             }
 
             $(\'#usrCommandMenu\').dropit({action: \'hover\'});
@@ -579,8 +601,11 @@ echo '
 			if ($context['current_topic'] >= 1)
 				echo '<div class="mainad" id="mainarea">';
 			else
-				echo '<div id="mainarea">'; 
+				echo '<div id="mainarea">';
 
+			// Show board description
+			if (!empty($options['show_board_desc']) && $context['description'] != '')
+				echo '<p class="description_board">', $context['description'], '</p>';
 			// Show the navigation tree.
 			theme_linktree();
 }
@@ -655,7 +680,7 @@ function theme_linktree($force_show = false)
 
 		// Don't show a separator for the last one.
 		if ($link_num != count($context['linktree']) - 1)
-			echo ' &#187;';
+			echo ' <img src="'.$settings['theme_url'].'/data/img/quote.png" />';
 
 		echo '
 			</li>';
@@ -672,7 +697,7 @@ function footerSmall_menu() {
 	global $context, $settings, $options, $scripturl, $txt;
 
 	echo '
-	<ul id="footerSmallUserMenu">
+	<ul id="usrSettingMenu">
 	';
 
 	foreach ($context['menu_buttons'] as $act => $button) {
@@ -727,11 +752,18 @@ function template_menu()
 
 	foreach ($context['menu_buttons'] as $act => $button)
 	{
-		echo '
-				<li id="button_', $act, '">
-					<a class="', $button['active_button'] ? 'active ' : '', '" href="', $button['href'], '"', isset($button['target']) ? ' target="' . $button['target'] . '"' : '', '><span>', $button['title'], '</span></a>';
-		echo '
-				</li>';
+		if ($act=="profile") {
+			if (!empty($button['sub_buttons'])) {
+				foreach ($button['sub_buttons'] as $childbutton) {
+					if ($childbutton['title']!=$context['user']['name']) {
+						echo '
+						<li>
+							<a href="', $childbutton['href'], '"', isset($childbutton['target']) ? ' target="' . $childbutton['target'] . '"' : '', '><span>', $childbutton['title'], !empty($childbutton['sub_buttons']) ? '...' : '', '</span></a>';
+						echo '</li>';
+					}
+				}
+			}
+		}
 	}
 
 	echo '

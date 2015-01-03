@@ -125,7 +125,7 @@ textarea
 /* Buttons should be styled a bit differently, in order to make them look more button'ish. */
 .button_submit, .button_reset
 {
-	background: #cde7ff url(../images/theme/submit_bg.png) no-repeat;
+	background: #cde7ff url(../../images/theme/submit_bg.png) no-repeat;
 	border: 1px solid #aaa;
 	cursor: pointer;
 	font-weight: normal;
@@ -137,7 +137,7 @@ input:hover, textarea:hover, button:hover, select:hover
 .button_submit:hover, .button_reset:hover
 {
 	border: 1px solid #aaa;
-	background: url(../images/theme/submit_bg.png) no-repeat 0 -140px #cde7ff;
+	background: url(../../images/theme/submit_bg.png) no-repeat 0 -140px #cde7ff;
 }
 input:focus, textarea:focus, button:focus, select:focus
 {
@@ -460,14 +460,14 @@ code.bbc_code
 	color: #fff;
 	font-size: 1em;
 	font-weight: bold;
-	background: url(../images/theme/main_block.png) no-repeat -10px -200px;
+	background: url(../../images/theme/main_block.png) no-repeat -10px -200px;
 }
 .catbg, .catbg2, tr.catbg td, tr.catbg2 td, tr.catbg th, tr.catbg2 th
 {
 	color: #fff;
 	font-size: 1em;
 	font-weight: bold;
-	background: url(../images/theme/main_block.png) no-repeat -10px -160px;
+	background: url(../../images/theme/main_block.png) no-repeat -10px -160px;
 }
 
 /* adjust the table versions of headers */
@@ -652,7 +652,7 @@ a.moderation_link, a.moderation_link:visited
 
 .openid_login
 {
-	background: white url(../images/openid.gif) no-repeat;
+	background: white url(../../images/openid.gif) no-repeat;
 	padding-left: 18px;
 }
 
@@ -696,7 +696,7 @@ p.para2
 ------------------------------------------------------- */
 #ajax_in_progress
 {
-	background: url(../images/theme/loadingbar.png) repeat-x;
+	background: url(../../images/theme/loadingbar.png) repeat-x;
 	color: #f96f00;
 	text-align: center;
 	font-size: 16pt;
@@ -818,12 +818,12 @@ h4.catbg a.toggle img
 }
 h4.catbg, h4.catbg2 , h3.catbg , h3.catbg2 , .table_list tbody.header td.catbg
 {
-	background: url(../images/theme/main_block.png) no-repeat 100% -160px;
+	background: url(../../images/theme/main_block.png) no-repeat 100% -160px;
 	padding-right: 9px;
 }
 h4.titlebg, h3.titlebg
 {
-	background: url(../images/theme/main_block.png) no-repeat 100% -200px;
+	background: url(../../images/theme/main_block.png) no-repeat 100% -200px;
 	padding-right: 9px;
 }
 h4.titlebg img.icon
@@ -833,7 +833,7 @@ h4.titlebg img.icon
 }
 div.cat_bar
 {
-	background: url(../images/theme/main_block.png) no-repeat 0 -160px;
+	background: url(../../images/theme/main_block.png) no-repeat 0 -160px;
 	padding-left: 9px;
 	height: 31px;
 	overflow: hidden;
@@ -841,7 +841,7 @@ div.cat_bar
 }
 div.title_bar
 {
-	background: url(../images/theme/main_block.png) no-repeat 0 -200px;
+	background: url(../../images/theme/main_block.png) no-repeat 0 -200px;
 	padding-left: 9px;
 	height: 31px;
 	overflow: hidden;
@@ -852,16 +852,16 @@ div.title_bar
 
 div.roundframe div.cat_bar
 {
-	background: url(../images/theme/main_block.png) no-repeat 0 -160px;
+	background: url(../../images/theme/main_block.png) no-repeat 0 -160px;
 	margin-bottom: 0;
 }
 div.roundframe div.cat_bar h3.catbg
 {
-	background: url(../images/theme/main_block.png) no-repeat 100% -160px;
+	background: url(../../images/theme/main_block.png) no-repeat 100% -160px;
 }
 div.title_barIC
 {
-	background: url(../images/theme/main_block.png) no-repeat 0 -120px;
+	background: url(../../images/theme/main_block.png) no-repeat 0 -120px;
 	padding-left: 9px;
 	height: 31px;
 	overflow: hidden;
@@ -869,7 +869,7 @@ div.title_barIC
 }
 div.title_barIC h4.titlebg
 {
-	background: url(../images/theme/main_block.png) no-repeat 100% -120px;
+	background: url(../../images/theme/main_block.png) no-repeat 100% -120px;
 }
 #upshrinkHeaderIC p.pminfo
 {
@@ -905,19 +905,19 @@ table.table_list a.collapse
 }
 tr.catbg th.first_th
 {
-	background: url(../images/theme/main_block.png) no-repeat 0 -160px;
+	background: url(../../images/theme/main_block.png) no-repeat 0 -160px;
 }
 tr.catbg th.last_th
 {
-	background: url(../images/theme/main_block.png) no-repeat 100% -160px;
+	background: url(../../images/theme/main_block.png) no-repeat 100% -160px;
 }
 tr.titlebg th.first_th
 {
-	background: url(../images/theme/main_block.png) no-repeat 0 -200px;
+	background: url(../../images/theme/main_block.png) no-repeat 0 -200px;
 }
 tr.titlebg th.last_th
 {
-	background: url(../images/theme/main_block.png) no-repeat 100% -200px;
+	background: url(../../images/theme/main_block.png) no-repeat 100% -200px;
 }
 .table_grid th.last_th input
 {
@@ -1027,25 +1027,25 @@ table.table_grid thead tr.catbg th
 {
 	display: block;
 	padding-left: 20px;
-	background: url(../images/theme/main_block.png) 0 0 no-repeat;
+	background: url(../../images/theme/main_block.png) 0 0 no-repeat;
 }
 .approvebg span.topslice span
 {
 	display: block;
-	background: url(../images/theme/main_block.png) 100% 0 no-repeat;
+	background: url(../../images/theme/main_block.png) 100% 0 no-repeat;
 	height: 11px;
 }
 .approvebg span.botslice
 {
 	display: block;
 	padding-left: 20px;
-	background: url(../images/theme/main_block.png) 0 -11px no-repeat;
+	background: url(../../images/theme/main_block.png) 0 -11px no-repeat;
 	margin-bottom: 0.2em;
 }
 .approvebg span.botslice span
 {
 	display: block;
-	background: url(../images/theme/main_block.png) 100% -11px no-repeat;
+	background: url(../../images/theme/main_block.png) 100% -11px no-repeat;
 	height: 11px;
 }
 .postbg
@@ -1075,7 +1075,7 @@ span.upperframe
 {
 	padding: 0;
 	display: block;
-	background: url(../images/theme/main_block.png) 0 -90px no-repeat;
+	background: url(../../images/theme/main_block.png) 0 -90px no-repeat;
 	padding-left: 20px;
 }
 span.upperframe span
@@ -1083,13 +1083,13 @@ span.upperframe span
 	padding: 0;
 	height: 12px;
 	display: block;
-	background: url(../images/theme/main_block.png) 100% -90px no-repeat;
+	background: url(../../images/theme/main_block.png) 100% -90px no-repeat;
 }
 span.lowerframe
 {
 	padding: 0;
 	display: block;
-	background: url(../images/theme/main_block.png) 0 -102px no-repeat;
+	background: url(../../images/theme/main_block.png) 0 -102px no-repeat;
 	padding-left: 20px;
 }
 span.lowerframe span
@@ -1097,7 +1097,7 @@ span.lowerframe span
 	padding: 0;
 	height: 12px;
 	display: block;
-	background: url(../images/theme/main_block.png) 100% -102px no-repeat;
+	background: url(../../images/theme/main_block.png) 100% -102px no-repeat;
 }
 
 /* The main content area.
@@ -1195,7 +1195,7 @@ span.lowerframe span
 	width: 19.2em;
 	font-weight: normal;
 	border-bottom: 1px solid #454545;
-	background: url(../images/theme/menu_gfx.png) 0 -100px no-repeat;
+	background: url(../../images/theme/menu_gfx.png) 0 -100px no-repeat;
 	padding: 7px 0 0 0;
 }
 .dropmenu li li
@@ -1218,25 +1218,25 @@ span.lowerframe span
 /* the active button */
 .dropmenu li a.active
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 100% 0;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 100% 0;
 	color: #fff;
 	font-weight: bold;
 }
 .dropmenu li a.active span.firstlevel
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 0 0;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 0 0;
 }
 /* the hover effects */
 .dropmenu li a.firstlevel:hover, .dropmenu li:hover a.firstlevel
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 100% -30px;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 100% -30px;
 	color: #333;
 	cursor: pointer;
 	text-decoration: none;
 }
 .dropmenu li a.firstlevel:hover span.firstlevel, .dropmenu li:hover a.firstlevel span.firstlevel
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 0 -30px;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 0 -30px;
 }
 /* the hover effects on level2 and 3 */
 .dropmenu li li a:hover, .dropmenu li li:hover>a
@@ -1296,7 +1296,7 @@ span.lowerframe span
 	display: block;
 	font-size: 0.8em;
 	color: #bbb;
-	background: url(../images/theme/menu_gfx.png) no-repeat 0 -60px;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 0 -60px;
 	padding: 0;
 	margin-left: 12px;
 	text-transform: uppercase;
@@ -1304,13 +1304,13 @@ span.lowerframe span
 }
 .buttonlist ul li a:hover
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 0 0;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 0 0;
 	color: #fff;
 	text-decoration: none;
 }
 .buttonlist ul li a span
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 100% -60px;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 100% -60px;
 	display: block;
 	height: 24px;
 	line-height: 20px;
@@ -1320,18 +1320,18 @@ span.lowerframe span
 }
 .buttonlist ul li a:hover span
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 100% 0;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 100% 0;
 }
 /* the active one */
 .buttonlist ul li a.active
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 0 -30px;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 0 -30px;
 	color: #222;
 	font-weight: bold;
 }
 .buttonlist ul li a.active span
 {
-	background: url(../images/theme/menu_gfx.png) no-repeat 100% -30px;
+	background: url(../../images/theme/menu_gfx.png) no-repeat 100% -30px;
 }
 .buttonlist ul li a.active
 {
@@ -1960,39 +1960,39 @@ ul.quickbuttons a:hover
 }
 ul.quickbuttons li.quote_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 0;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 0;
 }
 ul.quickbuttons li.remove_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 -30px;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 -30px;
 }
 ul.quickbuttons li.modify_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 -60px;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 -60px;
 }
 ul.quickbuttons li.approve_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 -90px;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 -90px;
 }
 ul.quickbuttons li.restore_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 -120px;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 -120px;
 }
 ul.quickbuttons li.split_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 -150px;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 -150px;
 }
 ul.quickbuttons li.reply_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 -180px;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 -180px;
 }
 ul.quickbuttons li.reply_all_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 -180px;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 -180px;
 }
 ul.quickbuttons li.notify_button
 {
-	background: url(../images/theme/quickbuttons.png) no-repeat 0 -210px;
+	background: url(../../images/theme/quickbuttons.png) no-repeat 0 -210px;
 }
 ul.quickbuttons li.inline_mod_check
 {
@@ -3008,7 +3008,7 @@ div#profile_success
 
 .profile_pie
 {
-	background-image: url(../images/stats_pie.png);
+	background-image: url(../../images/stats_pie.png);
 	float: left;
 	height: 20px;
 	width: 20px;
@@ -3232,7 +3232,7 @@ dl.stats dd
 .statsbar div.bar
 {
 	float: left;
-	background: url(../images/bar_stats.png) no-repeat;
+	background: url(../../images/bar_stats.png) no-repeat;
 	display: block;
 	margin: 0 4px;
 	height: 16px;
@@ -3242,7 +3242,7 @@ dl.stats dd
 	position: relative;
 	right: -4px;
 	padding: 0 4px 0 0;
-	background: url(../images/bar_stats.png) no-repeat 100%;
+	background: url(../../images/bar_stats.png) no-repeat 100%;
 	height: 16px;
 }
 tr.windowbg2 th.stats_month
@@ -3564,8 +3564,8 @@ span.hidelink
 #topbar { background: #252525;}
 #topbar span { padding-left: 15px; color: #fff; line-height: 30px;}
 
-#header { height: 100px; overflow: hidden; background: #1a1a1a url(../images/custom/header-bg.png) repeat-x;}
-#logo a { float: left; margin: 0; display: block; width: 400px; height: 100px; background: url(../images/custom/logo.png) no-repeat;}
+#header { height: 100px; overflow: hidden; background: #1a1a1a url(../../images/custom/header-bg.png) repeat-x;}
+#logo a { float: left; margin: 0; display: block; width: 400px; height: 100px; background: url(../../images/custom/logo.png) no-repeat;}
 #news { float: right; margin: 10px 20px 0 0; display: block; width: 400px; height: 90px;}
 #news p { padding: 8px; margin: 0;}
 
@@ -3583,12 +3583,12 @@ span.hidelink
 #topnav li:hover li ul, #topnav li li:hover li ul { top: -999em;}
 #topnav li li:hover ul, #topnav li li li:hover ul { left: 190px; top: 0;}
 
-#userbar { clear: both; background: #1a1a1a url(../images/custom/userbar.png) 0 0 repeat-x; height: 60px; border-bottom: solid 1px #333;}
+#userbar { clear: both; background: #1a1a1a url(../../images/custom/userbar.png) 0 0 repeat-x; height: 60px; border-bottom: solid 1px #333;}
 #userinfo { float: left; margin: 24px 0 0 25px;}
 #searchfield { float: left; margin: 17px 5% 0 1%; width: 94%;}
 
 #mainarea { /*border-top: solid 1px #333;*/ background: #1a1a1a; padding: 5px 5px 10px;}
-#footer { padding: 15px 0; color: #b2b2b2; background: #1d1d1d url(../images/custom/footer-bg.png) repeat-x; border-top: solid 1px #252525; text-align: center;}
+#footer { padding: 15px 0; color: #b2b2b2; background: #1d1d1d url(../../images/custom/footer-bg.png) repeat-x; border-top: solid 1px #252525; text-align: center;}
 #footer a { color: #1f8eb6;}
 #footer a:hover { color: #177090;}
 
