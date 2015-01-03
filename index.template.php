@@ -110,39 +110,39 @@ echo '<head>';
 		-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 		
 		.b_index {
-			background: url("',$boardurl,'/images/b_index.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_index.png") no-repeat left top;
 		}
 		
 		.b_flood {
-			background: url("',$boardurl,'/images/b_flood.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_flood.png") no-repeat left top;
 		}
 		
 		.b_serious {
-			background: url("',$boardurl,'/images/b_serious.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_serious.png") no-repeat left top;
 		}
 		
 		.b_gaming {
-			background: url("',$boardurl,'/images/b_gaming.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_gaming.png") no-repeat left top;
 		}
 		
 		.b_support {
-			background: url("',$boardurl,'/images/b_support.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_support.png") no-repeat left top;
 		}
 		
 		.b_updates {
-			background: url("',$boardurl,'/images/b_updates.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_updates.png") no-repeat left top;
 		}
 		
 		.b_art {
-			background: url("',$boardurl,'/images/b_art.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_art.png") no-repeat left top;
 		}
 		
 		.b_anarchy {
-			background: url("',$boardurl,'/images/b_rapture.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_rapture.png") no-repeat left top;
 		}
 		
 		.b_hq {
-			background: url("',$boardurl,'/images/b_hq.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_hq.png") no-repeat left top;
 		}
 		
 		.banner {
@@ -187,8 +187,8 @@ echo '<head>';
 	
 	// Here comes the JavaScript bits!
 	echo '
-	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/script.js?fin20"></script>
-	<script type="text/javascript" src="', $settings['theme_url'], '/scripts/theme.js?fin20"></script>
+	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/script.js"></script>
+	<script type="text/javascript" src="', $settings['theme_url'], '/scripts/theme.js"></script>
 	<script type="text/javascript"><!-- // --><![CDATA[
 		var smf_theme_url = "', $settings['theme_url'], '";
 		var smf_default_theme_url = "', $settings['default_theme_url'], '";
@@ -268,9 +268,11 @@ echo '<head>';
 	echo '
 	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/data/css/master.css?',date('ddmmyyyytt'),'" />';
 	echo '
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>';
+	<script type="text/javascript" src="',$settings['theme_url'],'/data/js/jquery-1.7.2.min.js"></script>';
 	echo '
 	<script type="text/javascript" src="', $settings['theme_url'], '/data/js/dropit.js"></script>';
+	echo '
+	<script type="text/javascript" src="', $settings['theme_url'], '/data/js/jquery.hoverIntent.minified.js"></script>';
 	echo '
 </head>
 <body>';
@@ -303,6 +305,7 @@ echo '
 			<ul id="navMenu">';
 			if($context['current_board'] == null) {
 				$banner='b_index';
+				$b_href= $boardurl;
 			}
 			
 			// News
@@ -377,7 +380,7 @@ echo '
 			echo '
 			</ul>
 		</nav>';
-			// Search
+		// Search
 		echo '
 		<div id="searchTool">
 			<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '">
@@ -418,16 +421,29 @@ echo '
 			// Avatar toolbar
 			echo "
 			<script type=\"text/javascript\">
-				// Avatar toolbar
-				function displayAvatarToolbar() {
-					return $(\"#avatarToolbar\").fadeIn();
+			$(document).ready(function () {
+				$(\"#avatarControls\").mouseenter(function () {
+					if ($(\"#avatarToolbar\").css(\"display\") == \"none\") {
+						showAvatarMenu();
+					}
+				});
+
+				$(\"#avatarControls\").mouseleave(function () {
+					
+				});
+
+				function showAvatarMenu() {
+					$(\"#avatarToolbar\").show();
+					$(\"#avatarToolbar\").addClass(\"menu-open\");
 				}
 
-				function hideAvatarToolbar() {
-					return $(\"#avatarToolbar\").delay(500).hide();
+				function fadeAvatarMenu() {
+					$(\"#avatarToolbar\").hide();
+					$(\"#avatarToolbar\").addClass(\"menu-closed\");
 				}
+			});
 			</script>
-			<div id=\"avatarToolbar\" onmouseover=\"displayAvatarToolbar();\" onclick=\"hideAvatarToolbar();\">";
+			<div id=\"avatarToolbar\">";
 
 			echo ''.$context['user']['avatar']['img'].'';
 
@@ -438,7 +454,7 @@ echo '
 				echo '<div id="avatar" style="background-image: url(\'',$settings['theme_url'],'/data/img/MonkeyAvatar.png\');">';
 			}
 
-			echo '<a id="avatarControls" onclick="displayAvatarToolbar();" onclick="hideAvatarToolbar();">'.$context['user']['name'].'</a>';
+			echo '<a id="avatarControls">'.$context['user']['name'].'</a>';
 			echo ' </div>';
 		}
 			echo '
@@ -457,7 +473,7 @@ echo '
                 </div>
 			';
 		} else {
-			template_menu();
+			//template_menu();
 		}
 		echo '</div>';
 		echo '
