@@ -461,7 +461,7 @@ echo '
 			</script>
 			<div id=\"avatarToolbar\">";
 			echo '<div id="avatarContainer">';
-			echo '<div id="avatarBig" style="background-image: url(\''.$context['user']['avatar']['href'].'\'"> </div>';
+			echo '<div id="avatarBig" style="background-image: url(\''.$context['user']['avatar']['href'].'\')"> </div>';
 			echo '<h4 class="username"><a class="userProfileLink" href="'.$boardurl.'?action=profile">'.$context['user']['name'].'</a></h4>';
 			echo '<p class=usermotto"><a class="editProfile" href="'.$boardurl.'?action=profile;area=forumprofile">Edit profile…</a></p>';
 			echo '</div>';
@@ -567,11 +567,23 @@ echo '
                 }
             }).blur();
 
+            // Check size of the username under avatar
+            if ($("#avatarToolbar h4 a.userProfileLink").text().length > 12 && $("#avatarToolbar h4 a.userProfileLink").text().length <= 14) {
+				$("#avatarToolbar h4 ").css("font-size", $("#avatarToolbar h4 a.userProfileLink").text().length*0.9+"px");
+            } else if ($("#avatarToolbar h4 a.userProfileLink").text().length > 14 && $("#avatarToolbar h4 a.userProfileLink").text().length <=16) {
+				$("#avatarToolbar h4 ").css("font-size", $("#avatarToolbar h4 a.userProfileLink").text().length*0.7+"px");
+            } else if ($("#avatarToolbar h4 a.userProfileLink").text().length > 16) {
+            	$("#avatarToolbar").css("width", "300px");
+            	$("#avatarToolbar h4 ").css("font-size", "12px");
+            	$("#avatarToolbar p").css("width", "160px");
+            }
+
             // Alerts image override
             $("#alerts_image").attr("src", "'.$settings['theme_url'].'/images/alerts/TheNotificationsSystemIsPoorlyWritten.png");
 
             // Have quick reply ready by default
             oQuickReply.swap();
+
 		});
 
     </script>';

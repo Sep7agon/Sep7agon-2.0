@@ -276,6 +276,9 @@ a:link, a:visited, a:active {
     margin: 10px;
     outline: 5px solid rgba(50, 50, 50, 0.75);
     float: left;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100px;
 }
 
 #avatarToolbar h4 {
@@ -851,10 +854,13 @@ textarea {
     color: #999;
 }
 
-textarea:hover, textarea:focus {
+textarea:hover, textarea:focus, .input_text:focus {
     color: ghostwhite;
 }
 
+#quickReplyOptions div.roundframe #postmodify div input.button_submit {
+    margin-top: 15px;
+}
 
 /* Like override */
 
@@ -1011,5 +1017,3 @@ ul#footerSmallMenu li:first-child {
 }
 /* Footer end
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
-
-
