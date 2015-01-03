@@ -262,7 +262,89 @@ a:link, a:visited, a:active {
     border: 1px solid rgba(135, 135, 135, 0.2);
     position: fixed;
     top: 52px;
-    display: none;
+    /* display: none; */
+}
+
+#avatarToolbar #avatarBig {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    outline: 5px solid rgba(50, 50, 50, 0.75);
+    float: left;
+}
+
+#avatarToolbar h4 {
+    padding: 10px 5px;
+    float: left;
+    font-size: 18px;
+}
+
+#avatarToolbar p {
+    float: right;
+    padding: 10px 2px;
+    font-size: 12px;
+    color: ghostwhite;
+    width: 120px;
+    border-top: 1px solid rgba(50, 50, 50, 0.75);
+}
+
+#avatarToolbar #avatarContainer {
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(50, 50, 50, 0.75);
+    clear: both;
+    display: block;
+    height: 125px;
+}
+
+#usrAvatarMenu {
+    margin-top: 2px;
+    float: left;
+    list-style: none;
+    width: 100%;
+}
+
+#usrAvatarMenu * a {
+    color: whitesmoke;
+    width: 100%;
+    display: block;
+}
+
+#usrAvatarMenu * a:hover {
+    color: grey;
+    text-decoration: none;
+}
+
+a.userProfileLink {
+    color: whitesmoke !important;
+}
+
+a.userProfileLink:hover {
+    color: #52A4C2 !important;
+    text-decoration: none !important;
+}
+
+a.editProfile {
+    color: grey !important;
+    font-style: italic;
+}
+
+a.editProfile:hover {
+    color: #52A4C2 !important;
+    font-style: italic !important;
+    text-decoration: none !important;
+}
+
+
+#usrAvatarMenu li {
+    width: 100%;
+    font-family: 'Play', sans-serif;
+    padding-top: 12px;
+    text-transform: uppercase;
+}
+
+#usrAvatarMenu li a span {
+    padding-left: 10px;
+    font-size: 16px;
 }
 
 /* User controls (Options or guest message) */

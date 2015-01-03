@@ -58,7 +58,7 @@ function template_html_above()
      \__/
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1f]=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1g]=-=-=-=-
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 -->
 <html lang="en"', $context['right_to_left'] ? ' dir="rtl"' : '', '>';
@@ -450,9 +450,12 @@ echo '
 			});
 			</script>
 			<div id=\"avatarToolbar\">";
-
-			echo ''.$context['user']['avatar']['img'].'';
-
+			echo '<div id="avatarContainer">';
+			echo '<div id="avatarBig" style="background-image: url(\''.$context['user']['avatar']['href'].'\'"> </div>';
+			echo '<h4 class="username"><a class="userProfileLink" href="'.$boardurl.'?action=profile">'.$context['user']['name'].'</a></h4>';
+			echo '<p class=usermotto"><a class="editProfile" href="'.$boardurl.'?action=profile;area=forumprofile">Edit profile…</a></p>';
+			echo '</div>';
+			template_menu();
 			echo "</div>";
 			if ($context['user']['avatar']['image']!=null) {
 				echo '<div id="avatar" style="background-image: url(\'',$context['user']['avatar']['href'],'\');">';
@@ -460,7 +463,7 @@ echo '
 				echo '<div id="avatar" style="background-image: url(\'',$settings['theme_url'],'/data/img/MonkeyAvatar.png\');">';
 			}
 
-			echo '<a id="avatarControls">'.$context['user']['name'].'</a>';
+			echo '<a id="avatarControls" href="'.$boardurl.'?action=profile">'.$context['user']['name'].'</a>';
 			echo ' </div>';
 		}
 			echo '
@@ -720,7 +723,7 @@ function template_menu()
 	global $context, $settings, $options, $scripturl, $txt;
 
 	echo '
-		<ul id="usrCommandMenu">';
+		<ul id="usrAvatarMenu">';
 
 	foreach ($context['menu_buttons'] as $act => $button)
 	{
