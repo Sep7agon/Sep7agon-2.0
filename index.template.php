@@ -58,7 +58,7 @@ function template_html_above()
      \__/
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1e]=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1f]=-=-=-=-
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 -->
 <html lang="en"', $context['right_to_left'] ? ' dir="rtl"' : '', '>';
@@ -422,6 +422,8 @@ echo '
 			echo "
 			<script type=\"text/javascript\">
 			$(document).ready(function () {
+				var timeOut;
+
 				$(\"#avatarControls\").mouseenter(function () {
 					if ($(\"#avatarToolbar\").css(\"display\") == \"none\") {
 						showAvatarMenu();
@@ -429,11 +431,11 @@ echo '
 				});
 
 				$(\"#avatarControls\").mouseleave(function () {
-<<<<<<< HEAD
-
-=======
-					
->>>>>>> FETCH_HEAD
+					if ($(\"#avatarToolbar\").hasClass(\"menu-open\")) {
+						timeOut = window.setTimeout(fadeAvatarMenu, 500);
+						$(\"#avatarToolbar\").mouseenter(function () { window.clearTimeout(timeOut) });
+						$(\"#avatarToolbar\").mouseleave(function () { fadeAvatarMenu() });
+					}
 				});
 
 				function showAvatarMenu() {
@@ -443,7 +445,7 @@ echo '
 
 				function fadeAvatarMenu() {
 					$(\"#avatarToolbar\").hide();
-					$(\"#avatarToolbar\").addClass(\"menu-closed\");
+					$(\"#avatarToolbar\").removeClass(\"menu-open\");
 				}
 			});
 			</script>
@@ -487,9 +489,10 @@ echo '
     <script type="text/javascript">
         $(document).ready(function () {
         	$(\'#NotLoggedIn\').show();
+        	/*
             if ($(\'#navMenu li\').length == 6) {
                 /* $(\'#userControls ul\').hide();
-                $(\'#userControls\').attr("id", "userControlsSmall"); */
+                $(\'#userControls\').attr("id", "userControlsSmall");
                 $(\'#headerContainer\').css("width","1200px");
             } else if ($(\'#navMenu li\').length >= 7) {
                 $(\'#headerContainer\').css("width","1220px");
@@ -497,6 +500,7 @@ echo '
             } else if ($("#navMenu li").length == 5) {
 				$(\'#headerContainer\').css("width","983px");
             }
+            */
 
             if ($(\'#navMenu li\').length > 6) {
                 $(\'#NotLoggedIn\').css("width", "160px");
@@ -583,23 +587,7 @@ function template_body_below()
 	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl;
 
 		echo '
-			</div>'; //Don't believe the helpful purple; it lies because of the if else above...
-			/*if ($context['current_topic'] >= 1) {
-				echo '<div id="sidead>
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- Sep7agon Responsive -->
-					<ins class="adsbygoogle"
-						 style="display:block"
-						 data-ad-client="ca-pub-9422718038809839"
-						 data-ad-slot="5402863603"
-						 data-ad-format="auto"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-				</div><div class="clearad"></div><div class="clearad"></div>';
-			}*/
-
-			// Show the "Powered by" and "Valid" logos, as well as the copyright. Remember, the copyright must be somewhere!
+			</div>';
 		echo '
 		</div>
 			<div id="footer">
