@@ -206,7 +206,7 @@ echo '<head>';
 		var ajax_notification_cancel_text = "', $txt['modify_cancel'], '";
 	// ]]></script>';
 
-	include('../../catchphrase.php');
+	include('catchphrase.php');
 
 	if ($context['page_title_html_safe'] == 'Sep7agon - Index')
 		$pagetitle = 'Sep7agon | ' . $outputphrase;
