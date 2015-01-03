@@ -429,7 +429,11 @@ echo '
 				});
 
 				$(\"#avatarControls\").mouseleave(function () {
+<<<<<<< HEAD
 
+=======
+					
+>>>>>>> FETCH_HEAD
 				});
 
 				function showAvatarMenu() {
