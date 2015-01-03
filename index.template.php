@@ -58,7 +58,7 @@ function template_html_above()
      \__/
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1h]=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1i]=-=-=-=-
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 -->
 <html lang="en"', $context['right_to_left'] ? ' dir="rtl"' : '', '>';
@@ -426,6 +426,8 @@ echo '
 				$(\"#avatarControls\").mouseenter(function () {
 					if ($(\"#avatarToolbar\").css(\"display\") == \"none\") {
 						showAvatarMenu();
+						// Hide alerts menu
+						$('#alerts').hide();
 					}
 				});
 
@@ -483,13 +485,14 @@ echo '
 		} else {
 			//template_menu();
 			echo '
-			<ul>';
-				echo '
-				<li><img src="'.$settings['theme_url'].'/data/img/mail.png" /></li>';
+			<ul id="usrCommandMenu">';
+
+				// Display PM icon
+				pmIcon();
 
 				if ($context['user']['is_admin']) {
 					echo '
-					<li><img style="padding-top: 15px;" src="'.$settings['theme_url'].'/data/img/tadmin.png" />';
+					<li class="menuOption"><img style="padding-top: 15px;" src="'.$settings['theme_url'].'/data/img/tadmin.png" />';
 
 					echo '
 					</li>';
@@ -497,7 +500,7 @@ echo '
 
 				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups'])) {
 					echo '
-					<li><img style="padding-top: 15px;" src="'.$settings['theme_url'].'/data/img/tblox.png" />';
+					<li class="menuOption"><img style="padding-top: 15px;" src="'.$settings['theme_url'].'/data/img/tblox.png" />';
 
 					echo '
 					</li>';
@@ -525,10 +528,12 @@ echo '
             }
             */
 
-            if ($("#userControls ul li").length == 1 && $("#navMenu li").length > 5) {
+            if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length > 5) {
             	$("#navMenu li").css("padding", "0px 14px");
-            } else if ($("#userControls ul li").length == 1 && $("#navMenu li").length == 5) {
+            } else if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length == 5) {
             	$("#navMenu li").css("padding", "0px 19px");
+            } else if ($("#userControls ul li.menuOption").length >= 2 && $("#navMenu li").length > 5) {
+            	$("#navMenu li").css("padding", "0px 6px");
             }
 
             $(\'#usrCommandMenu\').dropit({action: \'hover\'});
@@ -608,6 +613,60 @@ echo '
 				echo '<p class="description_board">', $context['description'], '</p>';
 			// Show the navigation tree.
 			theme_linktree();
+}
+
+function hasMessages() {
+	global $context;
+
+	if ($context['user']['unread_messages'] > 0) {
+		return true;
+	}
+
+	return false;
+}
+
+function pmIcon() {
+	global $settings, $boardurl;
+
+	// Link to PM page
+	$pmLink = $boardurl.'?action=pm';
+
+	// Display PM icon
+	echo '
+	<li id="pmIcon" class="menuOption">
+		<a class="';
+	if (hasMessages()) {
+		echo 'new-message" href="'.$pmLink.'" style="background-image: url(\''.$settings['theme_url'].'/data/img/newmail.png\')"> </a>';
+	} else {
+		echo 'no-message" href="'.$pmLink.'" style="background-image: url(\''.$settings['theme_url'].'/data/img/mail.png\')"> </a>';
+	}
+	echo '
+		<ul>';
+		// Generate the dropdown menu options
+		pmMenu();
+		echo '
+		</ul>';
+	echo '
+	</li>';
+}
+
+function pmMenu() {
+	global $context, $settings, $options, $scripturl, $txt;
+	foreach ($context['menu_buttons'] as $act => $button)
+	{
+		if ($act=="pm") {
+			if (!empty($button['sub_buttons'])) {
+				foreach ($button['sub_buttons'] as $childbutton) {
+					if ($childbutton['title']!=$context['user']['name']) {
+						echo '
+						<li>
+							<a href="', $childbutton['href'], '"', isset($childbutton['target']) ? ' target="' . $childbutton['target'] . '"' : '', '><span>', $childbutton['title'], !empty($childbutton['sub_buttons']) ? '...' : '', '</span></a>';
+						echo '</li>';
+					}
+				}
+			}
+		}
+	}
 }
 
 function template_body_below()
@@ -765,7 +824,6 @@ function template_menu()
 			}
 		}
 	}
-
 	echo '
 			</ul>';
 }

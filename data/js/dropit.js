@@ -40,6 +40,10 @@ $.getScript("jquery-1.11.2.min.js");
                         $('.dropit-open').removeClass('dropit-open').find('.dropit-submenu').hide();
                         settings.afterHide.call(this);
 
+                        // Hide alerts and avatar menu
+                        $('#avatarToolbar').hide();
+                        $('#alerts').hide();
+
                         // Open this menu
                         settings.beforeShow.call(this);
                         $(this).parents(settings.triggerParentEl).addClass('dropit-open').find(settings.submenuEl).show();
@@ -49,7 +53,7 @@ $.getScript("jquery-1.11.2.min.js");
                     });
 
                     // Close if outside click
-                    $(document).on('click', function(){
+                    $('.dropit').on('mouseleave', function(){
                         settings.beforeHide.call(this);
                         $('.dropit-open').removeClass('dropit-open').find('.dropit-submenu').hide();
                         settings.afterHide.call(this);

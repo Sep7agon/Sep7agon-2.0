@@ -263,6 +263,11 @@ a:link, a:visited, a:active {
     top: 52px;
     padding-bottom: 20px;
     display: none;
+    background: rgba(10, 10, 10, 0.8);
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
 }
 
 #avatarToolbar #avatarBig {
@@ -334,7 +339,6 @@ a.editProfile:hover {
     text-decoration: none !important;
 }
 
-
 #usrAvatarMenu li {
     width: 100%;
     font-family: 'Play', sans-serif;
@@ -384,6 +388,18 @@ a.editProfile:hover {
 #headerContainer #userControls ul li:hover {
     cursor: pointer;
     color: whitesmoke;
+}
+
+/* User Control Icons */
+
+#headerContainer #userControls ul li#pmIcon a.no-message,
+#headerContainer #userControls ul li#pmIcon a.new-message {
+    width: 16px;
+    height: 16px;
+    margin-top: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
 }
 
 /* Dropit overrides (JS addon for quick and neat drop down menus */
