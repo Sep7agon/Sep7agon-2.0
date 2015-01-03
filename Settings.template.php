@@ -242,6 +242,10 @@ function template_settings()
 			'id' => 'additional_options_collapsable',
 			'label' => $txt['additional_options_collapsable'],
 		),
+		array(
+			'id' => 'anarchy',
+			'label' => 'Anarchy',
+		),
 	);
 }
 

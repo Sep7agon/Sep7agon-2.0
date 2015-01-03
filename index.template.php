@@ -2,7 +2,7 @@
 
 // Current version
 global $forumVersion;
-$forumVersion = "2.1.0";
+$forumVersion = "2.1.0a";
 
 // Initialize the template... mainly little settings.
 function template_init()
@@ -191,7 +191,7 @@ echo '<head>';
 
 	// Here comes the JavaScript bits!
 	echo '
-	<script type="text/javascript" src="', $settings['default_theme_url'], 'scripts/script.js"></script>
+	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/script.js"></script>
 	<script type="text/javascript" src="', $settings['theme_url'], '/data/scripts/theme.js"></script>
 	<script type="text/javascript"><!-- // --><![CDATA[
 		var smf_theme_url = "', $settings['theme_url'], '";
@@ -293,7 +293,7 @@ if ($context['current_topic'] >= 1)
 else
 	$isthread = 'false';
 
-$anarchy = false;
+$anarchy = $context['theme_settings']['anarchy'];
 $forumDev = true;
 
 // Header, and logo
@@ -336,13 +336,12 @@ echo '
 
 			// Serious
 			echo '<li><a';
-			echo '<span class="forummenu"><a';
 			if ($context['current_board'] == 6) {
 				echo ' class="current_b"';
 				$b_href= '?board=6.0';
 				$banner='b_serious';
 			}
-			echo ' href="',$boardurl,'/index.php?board=6.0">Serious</a></span>';
+			echo ' href="',$boardurl,'/index.php?board=6.0">Serious</a></li>';
 
 			// Gaming
 			echo '<li><a';
@@ -430,7 +429,7 @@ echo '
 			echo "
 			<script type=\"text/javascript\">
 			$(document).ready(function () {
-				var timeOut;
+				var timeOutAvatar;
 
 				$(\"#avatarControls\").mouseenter(function () {
 					if ($(\"#avatarToolbar\").css(\"display\") == \"none\") {
@@ -442,8 +441,8 @@ echo '
 
 				$(\"#avatarControls\").mouseleave(function () {
 					if ($(\"#avatarToolbar\").hasClass(\"menu-open\")) {
-						timeOut = window.setTimeout(fadeAvatarMenu, 500);
-						$(\"#avatarToolbar\").mouseenter(function () { window.clearTimeout(timeOut) });
+						timeOutAvatar = window.setTimeout(fadeAvatarMenu, 500);
+						$(\"#avatarToolbar\").mouseenter(function () { window.clearTimeout(timeOutAvatar) });
 						$(\"#avatarToolbar\").mouseleave(function () { fadeAvatarMenu() });
 					}
 				});
@@ -542,15 +541,19 @@ echo '
             */
 
             if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length > 5) {
-            	$("#navMenu li").css("padding", "0px 26px");
+            	$("#navMenu li").css("padding", "0px 26px"); // Normal member with anarchy
             } else if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length == 5) {
-            	$("#navMenu li").css("padding", "0px 36px");
-            } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length > 5) {
-            	$("#navMenu li").css("padding", "0px 22px");
-            } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length > 5) {
-            	$("#navMenu li").css("padding", "0px 18px");
+            	$("#navMenu li").css("padding", "0px 36px"); // Normal member, no extra forums
+            } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length > 6) {
+            	$("#navMenu li").css("padding", "0px 14px"); // Admin with anarchy board
+            } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length == 6) {
+            	$("#navMenu li").css("padding", "0px 22px"); // Admin without Anarchy board
+            } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length == 6) {
+            	$("#navMenu li").css("padding", "0px 18px"); // Moderator with HQ
+            } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length > 6) {
+				$("#navMenu li").css("padding", "0px 18px"); // Moderator with HQ and Anarchy
             } else if ($("#userControls ul li.menuOption").length == 0) {
-            	$("#navMenu li").css("padding", "0px 25px");
+            	$("#navMenu li").css("padding", "0px 25px"); // Guest
             }
 
 
@@ -585,7 +588,7 @@ echo '
             $("#alerts_image").attr("src", "'.$settings['theme_url'].'/images/alerts/TheNotificationsSystemIsPoorlyWritten.png");
 
             // Have quick reply ready by default
-            oQuickReply.swap();
+            // oQuickReply.swap();
 		});
 
 		var searchTimeOut;

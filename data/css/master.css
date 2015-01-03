@@ -37,20 +37,14 @@ body {
 
 header {
     border-bottom: 1px solid rgba(60, 60, 60, 0.20);
-    background: -moz-linear-gradient(top,  rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.75) 50%, rgba(5,5,5,0.6) 97%,
-    rgba(5,5,5,0.6) 99%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(5,5,5,0.75)), color-stop(50%,
-    rgba(5,5,5,0.75)), color-stop(97%,rgba(5,5,5,0.6)), color-stop(99%,rgba(5,5,5,0.6))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
-    rgba(5,5,5,0.6) 99%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
-    rgba(5,5,5,0.6) 99%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
-    rgba(5,5,5,0.6) 99%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
-    rgba(5,5,5,0.6) 99%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf050505', endColorstr='#99050505',
-    GradientType=0 ); /* IE6-9 */
+    background: -moz-linear-gradient(top,  rgba(15,15,15,0.87) 0%, rgba(5,5,5,0.87) 5%, rgba(7,7,7,0.94) 50%, rgba(10,10,10,0.9) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(15,15,15,0.87)), color-stop(5%,rgba(5,5,5,0.87)), color-stop(50%,rgba(7,7,7,0.94)), color-stop(100%,rgba(10,10,10,0.9))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(15,15,15,0.87) 0%,rgba(5,5,5,0.87) 5%,rgba(7,7,7,0.94) 50%,rgba(10,10,10,0.9) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(15,15,15,0.87) 0%,rgba(5,5,5,0.87) 5%,rgba(7,7,7,0.94) 50%,rgba(10,10,10,0.9) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(15,15,15,0.87) 0%,rgba(5,5,5,0.87) 5%,rgba(7,7,7,0.94) 50%,rgba(10,10,10,0.9) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(15,15,15,0.87) 0%,rgba(5,5,5,0.87) 5%,rgba(7,7,7,0.94) 50%,rgba(10,10,10,0.9) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de0f0f0f', endColorstr='#e60a0a0a',GradientType=0 ); /* IE6-9 */
+
     width: 100%;
     height: 50px;
     position: fixed;
@@ -155,6 +149,13 @@ a:link, a:visited, a:active {
     color: whitesmoke;
     background: rgba(250, 250, 250, 0.2);
     padding: 2px 5px;
+    display: inline;
+}
+
+#navMenu li a {
+    height: 50px;
+    width: 100%;
+    display: block;
 }
 
 /* Header search */
@@ -179,20 +180,7 @@ a:link, a:visited, a:active {
     padding: 0 10px;
     margin: 0 0 0 -146px;
     font: normal 12px Arial, sans-serif;
-    background: -moz-linear-gradient(top,  rgba(25,25,25,0.92) 0%,
-    rgba(5,5,5,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom,
-    color-stop(0%,rgba(25,25,25,0.92)), color-stop(100%,rgba(5,5,5,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(25,25,25,0.92) 0%,
-    rgba(5,5,5,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(25,25,25,0.92) 0%,
-    rgba(5,5,5,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(25,25,25,0.92) 0%,
-    rgba(5,5,5,1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(25,25,25,0.92) 0%,
-    rgba(5,5,5,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb191919',
-    endColorstr='#050505',GradientType=0 ); /* IE6-9 */
+    background-color: rgba(25, 25, 25, 0.90);
     -webkit-box-shadow: -8px 0 5px 0 rgba(0,0,0,0.6);
     box-shadow: -8px 0 5px 0 rgba(0,0,0,0.6);
 }
@@ -206,7 +194,7 @@ a:link, a:visited, a:active {
 }
 
 #headerContainer #searchTool form input[type=text]:hover, #headerContainer #searchTool form input[type=submit]:hover {
-    background-color: rgba(20, 20, 20, 0.66);
+    background-color: rgba(30, 30, 30, 0.96);
 }
 
 #headerContainer #searchTool form input[type=submit]:hover {
@@ -634,6 +622,7 @@ img.alerts_va, #alerts_counter {
 
 .pagelinks.floatleft {
     float: right;
+    margin-top: 5px;
 }
 
 .buttonlist li:first-child a {
@@ -641,6 +630,35 @@ img.alerts_va, #alerts_counter {
 }
 
 .buttonlist ul li a {
+    border-radius: 5px;
+}
+
+
+.dropmenu li {
+    position: inherit;
+    border-radius: 5px;
+}
+
+.dropmenu li a.firstlevel span.firstlevel {
+    position: inherit;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.dropmenu li ul,
+.dropmenu li a.active, .dropmenu li a.active span.firstlevel,
+.dropmenu li a.firstlevel:hover, .dropmenu li:hover a.firstlevel,
+.dropmenu li a.firstlevel:hover span.firstlevel, .dropmenu li:hover a.firstlevel span.firstlevel {
+    background-image: none !important;
+}
+.dropmenu li a.active span.firstlevel {
+    background: rgba(110, 165, 185, 0.8) none;
+}
+
+.dropmenu li a.firstlevel:hover, .dropmenu li:hover a.firstlevel,
+.dropmenu li a.firstlevel:hover span.firstlevel, .dropmenu li:hover a.firstlevel span.firstlevel {
+    color: whitesmoke;
+    background: rgba(50, 50, 50, 0.8) none;
     border-radius: 5px;
 }
 
