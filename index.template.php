@@ -673,7 +673,7 @@ function adminIcon() {
 	echo '<li id="adminIcon" class="menuOption">';
 
 	// Display the icon as a link
-	echo '<a class="showAdmin" href="'.$boardurl.'?action=admin" style="background: url(\''.$settings['theme_url'].'/data/img/tadmin.png\')"> </a>';
+	echo '<a class="showAdmin" href="'.$boardurl.'?action=admin" style="background-image: url(\''.$settings['theme_url'].'/data/img/tadmin.png\')"> </a>';
 
 	// Get the admin submenu
 	echo '<ul>';
@@ -689,7 +689,7 @@ function modIcon() {
 	echo '<li id="modIcon" class="menuOption">';
 
 	// Display the icon as a link
-	echo '<a class="showMod" href="'.$boardurl.'?action=moderate" style="background: url(\''.$settings['theme_url'].'/data/img/tblox.png\')"> </a>';
+	echo '<a class="showMod" href="'.$boardurl.'?action=moderate" style="background-image: url(\''.$settings['theme_url'].'/data/img/tblox.png\')"> </a>';
 
 	// Get the mod submenu
 	echo '<ul>';
