@@ -1,0 +1,825 @@
+/*
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=[December, 2014]-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+      __
+   __/  \__		  ___          ____
+  /  \__/  \	 / __| ___ _ _|__  |_ _ __ _ ___ _ _
+  \__/  \__/	 \__ \/ -_) '_ \/ / _` / _` / _ \ ' \
+  /  \__/  \	 |___/\___| .__/_/\__,_\__, \___/_||_|
+  \__/  \__/	          |_|          |___/
+     \__/
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.0]-=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Play:400,700);
+
+/* HTML start
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+header * {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    background: #1b324a url('../img/bg.png') repeat-x fixed;
+    background-size: auto 100%;
+    color: whitesmoke;
+    line-height: 1.4em;
+    z-index: 10;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+header {
+    border-bottom: 1px solid rgba(60, 60, 60, 0.20);
+    background: -moz-linear-gradient(top,  rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.75) 50%, rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(5,5,5,0.75)), color-stop(50%,
+    rgba(5,5,5,0.75)), color-stop(97%,rgba(5,5,5,0.6)), color-stop(99%,rgba(5,5,5,0.6))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf050505', endColorstr='#99050505',
+    GradientType=0 ); /* IE6-9 */
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+}
+
+a:link, a:visited, a:active {
+    color: #52a4c2;
+}
+
+/* HTML end
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/* BE start (Background Effects)
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#bodyBE {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: -5;
+}
+
+/* BE end
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/* Header start
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#headerContainer {
+    width: 1100px;
+    height: 50px;
+    margin: 0 auto;
+    padding-left: 15px;
+    border-left: 1px solid rgba(60, 60, 60, 0.31);
+    border-right: 1px solid rgba(60, 60, 60, 0.31);
+    z-index: 100;
+    position: relative;
+}
+
+/* Logo */
+
+#headerContainer #branding {
+    float: left;
+    background: url('../img/logo-big.png') no-repeat center left;
+    background-size: 140px;
+    width: 140px;
+    height: 50px;
+    padding-right: 15px;
+    font: normal 18pt 'Play', sans-serif;
+    border-right: 1px solid rgba(60, 60, 60, 0.31);
+    text-indent: -99999px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#headerContainer #branding a {
+    width: 100%;
+    height: 50px;
+    display: block;
+}
+#headerContainer #branding:hover {
+    cursor: pointer;
+}
+
+/* Navigation */
+
+#headerContainer nav {
+    float: left;
+    height: 50px;
+    color: #666;
+    font-family: 'Play', sans-serif;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(60, 60, 60, 0.31);
+}
+
+#headerContainer nav ul, #headerContainer nav ol {
+    list-style: outside none none;
+}
+
+#headerContainer nav ul li {
+    float: left;
+    padding: 0 11px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 12px;
+}
+
+#headerContainer nav ul li a {
+    color: #666;
+    text-decoration: none;
+}
+
+#headerContainer nav ul li a:hover,
+#headerContainer nav ul li:hover {
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+#headerContainer nav ul li a.current_b {
+    color: whitesmoke;
+    background: rgba(250, 250, 250, 0.2);
+    padding: 2px 5px;
+}
+
+/* Header search */
+
+#headerContainer #searchTool {
+    float: left;
+    height: 50px;
+    margin: 0 0 0 15px;
+    padding-right: 15px;
+    border-right: 1px solid rgba(60, 60, 60, 0.31);
+}
+
+#headerContainer #searchTool form input[type=text], #headerContainer #searchTool form input[type=submit] {
+    margin: 8px 0 0 0;
+    border: none !important;
+}
+
+#headerContainer #searchTool form input[type=text] {
+    float: left;
+    background: -moz-linear-gradient(top,  rgba(25,25,25,0.1) 0%, rgba(25,25,25,0.1) 1%, rgba(32,32,32,0.25) 50%,
+    rgba(40,40,40,0.25) 98%, rgba(40,40,40,0.25) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(25,25,25,0.1)), color-stop(1%,
+    rgba(25,25,25,0.1)), color-stop(50%,rgba(32,32,32,0.25)), color-stop(98%,rgba(40,40,40,0.25)), color-stop(100%,
+    rgba(40,40,40,0.25))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(25,25,25,0.1) 0%,rgba(25,25,25,0.1) 1%,rgba(32,32,32,0.25) 50%,
+    rgba(40,40,40,0.25) 98%,rgba(40,40,40,0.25) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(25,25,25,0.1) 0%,rgba(25,25,25,0.1) 1%,rgba(32,32,32,0.25) 50%,
+    rgba(40,40,40,0.25) 98%,rgba(40,40,40,0.25) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(25,25,25,0.1) 0%,rgba(25,25,25,0.1) 1%,rgba(32,32,32,0.25) 50%,
+    rgba(40,40,40,0.25) 98%,rgba(40,40,40,0.25) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(25,25,25,0.1) 0%,rgba(25,25,25,0.1) 1%,rgba(32,32,32,0.25) 50%,
+    rgba(40,40,40,0.25) 98%,rgba(40,40,40,0.25) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a191919', endColorstr='#40282828',
+    GradientType=0 ); /* IE6-9 */
+    color: #666;
+    height: 25px;
+    padding: 5px;
+    font: normal 12px Arial, sans-serif;
+}
+
+#headerContainer #searchTool form input[type=submit] {
+    background: rgba(0, 0, 0, 0.56) url('../img/icon-search.png') no-repeat center;
+    float: right;
+    height: 35px;
+    padding: 5px 15px;
+}
+
+#headerContainer #searchTool form input[type=text]:hover, #headerContainer #searchTool form input[type=submit]:hover {
+    background-color: rgba(20, 20, 20, 0.66);
+}
+
+#headerContainer #searchTool form input[type=submit]:hover {
+    cursor: pointer;
+}
+
+/* User information panel (Avatar and notifications)  */
+
+#headerContainer #userInfoPane {
+    float: left;
+    height: 50px;
+    padding-top: 4px;
+    margin-left: 15px;
+}
+
+#headerContainer #userInfoPane #notification {
+    border-radius: 45px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 17px;
+    position: fixed;
+    margin-top: 30px;
+    margin-left: 30px;
+    /*
+    background-color: rgba(125, 0, 0, 1);
+    border: 1px solid rgba(160, 0, 0, 1);
+    font: normal 13px Arial, sans-serif; */
+}
+
+#headerContainer #userInfoPane #avatar {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 40px;
+    background-origin: border-box;
+    outline: 2px solid rgba(0, 0, 0, 0.2);
+    width: 40px;
+    height: 40px;
+    display: table;
+}
+
+/* Avatar Controls */
+
+#headerContainer #userInfoPane #avatar a#avatarControls {
+    width: 100%;
+    height: 100%;
+    display: table;
+    cursor: pointer;
+    text-indent: -9999px;
+}
+
+/* Avatar toolbar */
+
+#avatarToolbar {
+    width: 245px;
+    height: 300px;
+    background-color: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(135, 135, 135, 0.2);
+    position: fixed;
+    top: 52px;
+    display: none;
+}
+
+/* User controls (Options or guest message) */
+
+#headerContainer #userControls {
+    float: left;
+    height: 50px;
+    margin: 0 auto 0 10px;
+    color: #666;
+    font-family: 'Play', sans-serif;
+    text-transform: uppercase;
+}
+
+#headerContainer #userControls a {
+    color: #666;
+    text-decoration: none;
+}
+
+#headerContainer #userControls a:hover {
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+#headerContainer #userControls ul {
+    list-style: outside none none;
+}
+
+#headerContainer #userControls ul li {
+    float: left;
+    padding: 0 11px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 12px;
+}
+
+#headerContainer #userControls ul li:hover {
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+/* Dropit overrides (JS addon for quick and neat drop down menus */
+
+ul.dropit-submenu {
+    width: 240px;
+    background: rgba(10, 10, 10, 0.8);
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+}
+
+ul.dropit-submenu li {
+    width: 218px;
+    border-bottom: 1px solid rgba(60, 60, 60, 0.61);
+}
+
+ul.dropit-submenu li:last-child {
+    border: none;
+}
+
+ul.dropit-submenu li:hover {
+    background-color: rgba(40, 40, 40, 0.2);
+}
+
+ul.dropit-submenu li a {
+    display: block;
+    width: 100%;
+}
+
+ul.dropit-submenu li a:hover {
+    color: whitesmoke !important;
+}
+
+#NotLoggedIn {
+    display: none;
+}
+
+#headerContainer #userControls #NotLoggedIn,
+#headerContainer #userControlsSmall #NotLoggedIn {
+    height: 50px;
+    float: left;
+    line-height: 48px;
+    color: #666;
+}
+
+#headerContainer #userControlsSmall #NotLoggedIn {
+    line-height: 1.2em;
+    width: 200px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#headerContainer #userControls #NotLoggedIn,
+#headerContainer #userControlsSmall #NotLoggedIn {
+    float: left;
+    font-size: 12px !important;
+    font-family: 'Arial', sans-serif !important;
+    text-transform: none;
+}
+
+#NotLoggedIn a {
+    color: #52a4c2 !important;
+    text-decoration: none;
+}
+
+#NotLoggedIn a:hover {
+    color: whitesmoke !important;
+}
+
+
+/* Alerts override */
+
+#alerts_frame {
+    position: relative;
+    z-index: 500;
+    display: block;
+}
+
+#alerts {
+    top: 10px !important;
+    left: 0 !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    background: -moz-linear-gradient(top,  rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.75) 50%, rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(5,5,5,0.75)), color-stop(50%,
+    rgba(5,5,5,0.75)), color-stop(97%,rgba(5,5,5,0.6)), color-stop(99%,rgba(5,5,5,0.6))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(5,5,5,0.75) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.6) 97%,
+    rgba(5,5,5,0.6) 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf050505', endColorstr='#99050505',
+    GradientType=0 ); /* IE6-9 */
+}
+
+img.alerts_va, #alerts_counter {
+    display: none;
+}
+
+.alarm_border, #top_alerts {
+    border-bottom-color: rgba(60, 60, 60, 0.21) !important;
+}
+
+#alerts_image_loading {
+    display: none;
+}
+
+.alerts_hide {
+    opacity: 1 !important;
+}
+
+#alerts_image {
+    width: 15px;
+    height: 15px;
+}
+
+/* Header end
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/* General start
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/* Button override */
+.buttonlist ul li a span {
+    display: inline-block;
+}
+
+.buttonlist {
+    margin-bottom: 10px;
+}
+
+.buttonlist ul {
+    padding-left: 0;
+}
+
+.buttonlist ul li a,
+.buttonlist ul li a span, #rightQt, #leftQt, .disabled {
+    background: rgba(50, 50, 50, 0.4) none;
+}
+
+.buttonlist ul li a.active,
+.buttonlist ul li a.active span {
+    background: rgba(110, 165, 185, 0.6) none;
+}
+
+.buttonlist ul li a.active:hover,
+.buttonlist ul li a.active span:hover {
+    background: rgba(110, 165, 185, 0.8) none;
+}
+
+.buttonlist ul li a:hover {
+    background: rgba(70, 70, 70, 0.6) none;
+}
+
+.buttonlist ul li a span:hover {
+    background: rgba(50, 50, 50, 0.8) none;
+}
+
+.buttonlist ul li a span {
+    position: inherit;
+    right: 0;
+    padding: 2px 5px 0 5px;
+    border-radius: 5px;
+    margin: 2px 0 0 0;
+}
+
+.pagelinks.floatleft {
+    float: right;
+}
+
+.buttonlist li:first-child a {
+    margin-left: 0;
+}
+
+.buttonlist ul li a {
+    border-radius: 5px;
+}
+
+/* Main page button override to fix position */
+
+#sp_center div.mark_read div.buttonlist ul {
+    padding: 0;
+}
+
+/* Obsolete menu overrides */
+#button_home, #button_like_post_stats {
+    display: none;
+}
+
+/* Small menu panel override */
+
+/* Override for index right panel */
+
+.sp_block_section_last {
+    margin-top: 2px;
+}
+
+/* Wrapper and main area background overrides */
+
+#container {
+    background: none;
+    border: none;
+}
+
+#mainarea {
+    background: none;
+    border: none;
+}
+
+div#wrapper{
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.55);
+    min-height: 600px;
+    width: 950px;
+}
+
+/* Overall title background overrides */
+div.cat_bar, div.roundframe div.cat_bar, .catbg, .catbg2, tr.catbg th.first_th, tr.catbg td, tr.catbg2 td,
+tr.catbg th, tr.catbg2 th, tr.catbg th.last_th, h4.catbg, h4.catbg2, h3.catbg, h3.catbg2, .table_list
+tbody.header td.catbg, div.roundframe div.cat_bar h3.catbg {
+    background: -moz-linear-gradient(top,  rgba(61,61,61,0.25) 0%, rgba(60,60,60,0.25) 1%,
+    rgba(0,0,0,0.35) 99%, rgba(0,0,0,0.35) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(61,61,61,0.25)),
+    color-stop(1%,rgba(60,60,60,0.25)), color-stop(99%,rgba(0,0,0,0.35)), color-stop(100%,rgba(0,0,0,0.35)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(61,61,61,0.25) 0%,rgba(60,60,60,0.25) 1%,
+    rgba(0,0,0,0.35) 99%,rgba(0,0,0,0.35) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(61,61,61,0.25) 0%,rgba(60,60,60,0.25) 1%,
+    rgba(0,0,0,0.35) 99%,rgba(0,0,0,0.35) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(61,61,61,0.25) 0%,rgba(60,60,60,0.25) 1%,
+    rgba(0,0,0,0.35) 99%,rgba(0,0,0,0.35) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(61,61,61,0.25) 0%,rgba(60,60,60,0.25) 1%,
+    rgba(0,0,0,0.35) 99%,rgba(0,0,0,0.35) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#403d3d3d',
+    endColorstr='#59000000',GradientType=0 ); /* IE6-9 */
+}
+
+/* Post list background changer */
+
+.windowbg {
+    background-color: rgba(30, 30, 30, 0.7);
+}
+
+.windowbg2 {
+    background-color: rgba(50, 50, 50, 0.7);
+}
+
+#forumposts * .windowbg {
+    background-color: #282828;
+}
+
+#forumposts * .windowbg2 {
+    background-color: #282828;
+}
+
+table.table_grid td {
+    border-bottom-color: rgba(10, 10, 10, 0.25);
+    border-right-color: rgba(10, 10, 10, 0.25);
+}
+
+/* Altering color for topic view */
+.icon2.windowbg, .moderation.windowbg {
+    background-color: rgba(50, 50, 50, 0.7);
+}
+
+#messageindex tr:nth-child(even),
+#messageindex tr:nth-child(even) td {
+    background-color: rgba(50, 50, 50, 0.3) !important;
+}
+
+/* Title override */
+
+.sp_article_icon {
+    display: none;
+}
+
+div.cat_bar {
+    padding: 0;
+}
+
+div.cat_bar h3 {
+    padding-left: 10px;
+}
+
+h3.catbg, h3.catbg2, h3.titlebg, h4.titlebg, h4.catbg {
+    padding-left: 10px;
+}
+
+/* Background overrides */
+
+span.upperframe, span.lowerframe, .roundframe  {
+    background: rgba(30, 30, 30, 0.3);
+}
+
+.roundframe {
+    border-left: 1px solid rgba(40, 40, 40, 0.5);
+    border-right: 1px solid rgba(40, 40, 40, 0.5);
+}
+
+span.upperframe {
+    border-top: 1px solid rgba(40, 40, 40, 0.5);
+    border-left: 1px solid rgba(40, 40, 40, 0.5);
+    border-right: 1px solid rgba(40, 40, 40, 0.5);
+}
+
+span.lowerframe {
+    border-bottom: 1px solid rgba(40, 40, 40, 0.5);
+    border-left: 1px solid rgba(40, 40, 40, 0.5);
+    border-right: 1px solid rgba(40, 40, 40, 0.5);
+}
+
+span.upperframe span, span.lowerframe span {
+    background: rgba(30, 30, 30, 0.1);
+}
+
+.windowbg span.botslice, .windowbg span.botslice span, .windowbg span.topslice, .windowbg span.topslice span {
+    background: none;
+}
+
+div.title_barIC, div.title_barIC h4.titlebg, .titlebg, .titlebg2, tr.titlebg th, tr.titlebg td, tr.titlebg2 td  {
+    background: rgba(10, 10, 10, 0.2);
+}
+
+.description_board {
+    background: rgba(30, 30, 30, 0.3);
+    border: 1px solid rgba(40, 40, 40, 0.5);
+    margin: 5px 0.4em;
+}
+
+/* Avatar 'padding' override */
+
+div.poster ul div div {
+    margin: 4px auto -1px !important;
+}
+
+div.poster ul div {
+    margin: 0;
+}
+
+/* Admin/user panel overrides */
+
+#main_container, #main_admsection {
+    position: inherit;
+}
+
+#left_admsection {
+    margin-right: 10px;
+    padding-right: 0;
+    background-color: rgba(50, 50, 50, 0.2);
+}
+
+/* Form inputs override */
+input, button, select, textarea, .button_submit, .button_reset {
+    background: none repeat scroll 0% 0% #282828;
+    color: #777;
+    border: 1px solid #777;
+    text-decoration: none;
+    padding: 3px 6px;
+    margin: 0px 3px;
+}
+
+.button_submit:hover, .button_reset:hover {
+    background: #373737;
+    color: #CCCCCC;
+}
+
+/* Form elements override */
+
+.richedit_resize {
+    border: none;
+    background-color: transparent;
+}
+
+#bbcBox_message div img {
+    background: whitesmoke !important;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+
+.invalid_input {
+    background-color: brown;
+    border-color: firebrick;
+    color: whitesmoke;
+}
+
+.valid_input {
+    background-color: teal;
+    color: whitesmoke;
+}
+
+textarea {
+    color: #999;
+}
+
+/* Like override */
+
+.like_post_box, .like_unlike_link {
+    position: inherit;
+}
+
+
+/* General end
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/* Footer start
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/* Footer override */
+
+#footer * a {
+    color: #647c94;
+}
+
+#footer * a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+#footer {
+    background: none;
+    padding: 0;
+    text-align: left;
+    width: 940px;
+    margin: 0 auto;
+    border-top: none;
+}
+
+p.copyNote {
+    text-transform: uppercase;
+    font-size: 10px;
+    clear: both;
+}
+
+p.copyNote a {
+    margin-right: 15px;
+}
+
+#footerControls {
+    margin: 0 auto;
+    width: 95%;
+}
+
+#footerSmallMenu {
+    float: left;
+}
+
+ul#footerSmallUserMenu {
+    padding-left: 0;
+    float: left;
+}
+
+ul#footerSmallUserMenu li#footerBtn_admin,
+ul#footerSmallUserMenu li#footerBtn_moderate,
+ul#footerSmallUserMenu li#footerBtn_profile,
+ul#footerSmallUserMenu li#footerBtn_pm,
+ul#footerSmallUserMenu li#footerBtn_search {
+    float: left;
+}
+
+ul#footerSmallUserMenu li#footerBtn_moderate,
+ul#footerSmallUserMenu li#footerBtn_profile,
+ul#footerSmallUserMenu li#footerBtn_pm,
+ul#footerSmallUserMenu li#footerBtn_search {
+    margin-left: 15px;
+}
+
+ul#footerSmallUserMenu li:nth-child(2) {
+    margin-left: 0 !important;
+}
+
+ul#footerSmallUserMenu li span {
+    color: whitesmoke !important;
+    font-weight: bold;
+}
+
+ul#footerSmallUserMenu ul {
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+ul#footerSmallUserMenu,
+ul#footerSmallUserMenu ul {
+    list-style: none;
+}
+
+ul#footerSmallUserMenu li#footerBtn_home,
+ul#footerSmallUserMenu li#footerBtn_like_post_stats {
+    display: none;
+}
+
+ul#footerSmallMenu {
+    width: 110px;
+    list-style: none;
+    padding-left: 0;
+}
+
+ul#footerSmallMenu li strong,
+ul#footerSmallUserMenu li strong {
+    color: whitesmoke;
+}
+
+ul#footerSmallMenu li {
+    padding-left: 5px;
+
+}
+
+ul#footerSmallMenu li:first-child {
+    padding-left: 0;
+}
+/* Footer end
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+
