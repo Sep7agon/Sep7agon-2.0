@@ -569,6 +569,9 @@ echo '
 
             // Alerts image override
             $("#alerts_image").attr("src", "'.$settings['theme_url'].'/images/alerts/TheNotificationsSystemIsPoorlyWritten.png");
+
+            // Have quick reply ready by default
+            oQuickReply.swap();
 		});
 
     </script>';

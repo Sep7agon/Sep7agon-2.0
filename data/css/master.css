@@ -851,6 +851,11 @@ textarea {
     color: #999;
 }
 
+textarea:hover, textarea:focus {
+    color: ghostwhite;
+}
+
+
 /* Like override */
 
 .like_post_box, .like_unlike_link {
