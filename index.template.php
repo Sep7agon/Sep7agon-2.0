@@ -588,7 +588,7 @@ echo '
             $("#alerts_image").attr("src", "'.$settings['theme_url'].'/images/alerts/TheNotificationsSystemIsPoorlyWritten.png");
 
             // Have quick reply ready by default
-            // oQuickReply.swap();
+            oQuickReply.swap();
 		});
 
 		var searchTimeOut;

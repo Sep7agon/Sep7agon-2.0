@@ -806,7 +806,8 @@ span.upperframe span, span.lowerframe span {
     background: none;
 }
 
-div.title_barIC, div.title_barIC h4.titlebg, .titlebg, .titlebg2, tr.titlebg th, tr.titlebg td, tr.titlebg2 td  {
+div.title_barIC, div.title_barIC h4.titlebg, .titlebg, .titlebg2, tr.titlebg th, tr.titlebg td, tr.titlebg2 td,
+tr.titlebg th.last_th, tr.titlebg th, tr.titlebg th.first_th, div.title_bar, h4.titlebg, h3.titlebg  {
     background: rgba(10, 10, 10, 0.2);
 }
 
@@ -881,11 +882,11 @@ input, button, select, textarea, .button_submit, .button_reset {
     color: whitesmoke;
 }
 
-textarea {
+textarea, input {
     color: #999;
 }
 
-textarea:hover, textarea:focus, .input_text:focus {
+textarea:hover, textarea:focus, .input_text:focus, input:focus, input:hover {
     color: ghostwhite;
 }
 
