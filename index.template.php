@@ -499,20 +499,14 @@ echo '
 				// Display PM icon
 				pmIcon();
 
+				// Display admin icon
 				if ($context['user']['is_admin']) {
-					echo '
-					<li class="menuOption"><img style="padding-top: 15px;" src="'.$settings['theme_url'].'/data/img/tadmin.png" />';
-
-					echo '
-					</li>';
+					adminIcon();
 				}
 
+				// Display mod icon
 				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups'])) {
-					echo '
-					<li class="menuOption"><img style="padding-top: 15px;" src="'.$settings['theme_url'].'/data/img/tblox.png" />';
-
-					echo '
-					</li>';
+					modIcon();
 				} echo '
 			</ul>';
 		}
@@ -551,8 +545,10 @@ echo '
             	$("#navMenu li").css("padding", "0px 14px");
             } else if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length == 5) {
             	$("#navMenu li").css("padding", "0px 19px");
-            } else if ($("#userControls ul li.menuOption").length >= 2 && $("#navMenu li").length > 5) {
-            	$("#navMenu li").css("padding", "0px 6px");
+            } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length > 5) {
+            	$("#navMenu li").css("padding", "0px 5px");
+            } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length > 5) {
+            	$("#navMenu li").css("padding", "0px 7px");
             }
 
             $(\'#usrCommandMenu\').dropit({action: \'hover\'});
@@ -663,26 +659,57 @@ function pmIcon() {
 	echo '
 		<ul>';
 		// Generate the dropdown menu options
-		pmMenu();
+		displaySpecificMenu("pm");
 		echo '
 		</ul>';
 	echo '
 	</li>';
 }
 
-function pmMenu() {
+function adminIcon() {
+	global $settings, $boardurl;
+
+	// Display admin icon
+	echo '<li id="adminIcon" class="menuOption">';
+
+	// Display the icon as a link
+	echo '<a class="showAdmin" href="'.$boardurl.'?action=admin" style="background: url(\''.$settings['theme_url'].'/data/img/tadmin.png\')"> </a>';
+
+	// Get the admin submenu
+	echo '<ul>';
+	displaySpecificMenu("admin");
+	echo '</ul>';
+	echo '</li>';
+}
+
+function modIcon() {
+	global $settings, $boardurl;
+
+	// Display mod icon
+	echo '<li id="modIcon" class="menuOption">';
+
+	// Display the icon as a link
+	echo '<a class="showMod" href="'.$boardurl.'?action=moderate" style="background: url(\''.$settings['theme_url'].'/data/img/tblox.png\')"> </a>';
+
+	// Get the mod submenu
+	echo '<ul>';
+	displaySpecificMenu("moderate");
+	echo '</ul>';
+	echo '</li>';
+}
+
+function displaySpecificMenu($menu) {
 	global $context, $settings, $options, $scripturl, $txt;
 	foreach ($context['menu_buttons'] as $act => $button)
 	{
-		if ($act=="pm") {
+		if ($act==$menu) {
 			if (!empty($button['sub_buttons'])) {
 				foreach ($button['sub_buttons'] as $childbutton) {
-					if ($childbutton['title']!=$context['user']['name']) {
-						echo '
-						<li>
-							<a href="', $childbutton['href'], '"', isset($childbutton['target']) ? ' target="' . $childbutton['target'] . '"' : '', '><span>', $childbutton['title'], !empty($childbutton['sub_buttons']) ? '...' : '', '</span></a>';
-						echo '</li>';
-					}
+					echo '<li>
+					<a href="', $childbutton['href'], '"', isset($childbutton['target']) ? ' target="' .
+						$childbutton['target'] . '"' : '', '><span>', $childbutton['title'],
+					!empty($childbutton['sub_buttons']) ? '...' : '', '</span></a>';
+					echo '</li>';
 				}
 			}
 		}

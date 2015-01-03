@@ -393,7 +393,9 @@ a.editProfile:hover {
 /* User Control Icons */
 
 #headerContainer #userControls ul li#pmIcon a.no-message,
-#headerContainer #userControls ul li#pmIcon a.new-message {
+#headerContainer #userControls ul li#pmIcon a.new-message,
+#headerContainer #userControls ul li#adminIcon a.showAdmin,
+#headerContainer #userControls ul li#modIcon a.showMod {
     width: 16px;
     height: 16px;
     margin-top: 15px;
@@ -475,6 +477,7 @@ ul.dropit-submenu li a:hover {
 }
 
 /* Version information on development */
+
 #forumTestVersion {
     width: 100%;
     margin: 0 auto;
