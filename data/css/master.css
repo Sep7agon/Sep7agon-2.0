@@ -306,15 +306,14 @@ a:link, a:visited, a:active {
 
 #avatarToolbar {
     width: 245px;
-    background-color: rgba(10, 10, 10, 0.9);
+    background-color: rgba(10, 10, 10, 0.92);
     border: 1px solid rgba(135, 135, 135, 0.2);
     position: fixed;
     top: 52px;
     padding-bottom: 20px;
     display: none;
-    background: rgba(10, 10, 10, 0.8);
     border-bottom-right-radius: 5px;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-top-color: rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
 }
@@ -361,13 +360,15 @@ a:link, a:visited, a:active {
 }
 
 #usrAvatarMenu * a {
-    color: whitesmoke;
+    color: #666;
     width: 100%;
     display: block;
+    padding: 10px 0;
 }
 
 #usrAvatarMenu * a:hover {
-    color: grey;
+    color: whitesmoke;
+    background-color: rgba(40, 40, 40, 0.2);
     text-decoration: none;
 }
 
@@ -394,13 +395,12 @@ a.editProfile:hover {
 #usrAvatarMenu li {
     width: 100%;
     font-family: 'Play', sans-serif;
-    padding-top: 12px;
     text-transform: uppercase;
 }
 
 #usrAvatarMenu li a span {
     padding-left: 10px;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 
@@ -468,7 +468,7 @@ ul.dropit-submenu, #avatarToolbar {
 
 ul.dropit-submenu {
     width: 240px;
-    background: rgba(10, 10, 10, 0.8);
+    background: rgba(10, 10, 10, 0.92);
     border-bottom-right-radius: 5px;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);

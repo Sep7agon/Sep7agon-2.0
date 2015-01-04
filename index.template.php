@@ -685,6 +685,11 @@ echo '
 			$("#footer").width($("#mainarea").width());
 			$("nav").addClass("small-screen");
 			$("#smallNavMenu").show();
+		} else {
+			$("#headerContainer").width(950);
+			$("#footer").width(950);
+			$("nav").removeClass("small-screen");
+			$("#smallNavMenu").hide();
 		}
 	});
 	</script>';
