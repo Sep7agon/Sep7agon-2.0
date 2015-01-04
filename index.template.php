@@ -440,6 +440,9 @@ echo '
 						showAvatarMenu();
 						// Hide alerts menu
 						$('#alerts').hide();
+						// Hide other menus
+						$('.dropit-submenu').hide();
+						hideSearchTooltip();
 					}
 				});
 
