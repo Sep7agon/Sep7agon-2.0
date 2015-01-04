@@ -32,7 +32,7 @@ body {
     color: whitesmoke;
     line-height: 1.4em;
     z-index: 10;
-    -webkit-font-smoothing: subpixel-antialiased !important;
+    -webkit-font-smoothing: antialiased !important;
 }
 
 header {
@@ -216,7 +216,6 @@ a:link, a:visited, a:active {
 }
 
 #searchTextfield a {
-    width: 100%;
     display: block;
     padding: 10px;
     color: #666;
@@ -240,6 +239,7 @@ a:link, a:visited, a:active {
     border-bottom: 1px solid rgba(140, 140, 140, 0.1) !important;
     margin: 0;
     clear: both;
+    width: 126px;
 }
 
 #headerContainer #searchTool form input[type=submit] {

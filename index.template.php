@@ -672,7 +672,7 @@ echo '
 	<script type="text/javascript">
 	$(document).ready( function() {
 		if ($(window).width() < 1024) {
-			$("#headerContainer").width($("#mainarea").width());
+			$("#headerContainer").width($("#mainarea").width()-50);
 			$("#footer").width($("#mainarea").width());
 			$("nav").addClass("small-screen");
 			$("#smallNavMenu").show();
@@ -680,14 +680,15 @@ echo '
 	});
 
 	$(window).resize( function() {
-		if ($(window).width() < 960) {
-			$("#headerContainer").width($("#mainarea").width());
-			$("#footer").width($("#mainarea").width());
+		$windowSize = $(window).width();
+		if ($windowSize <= 960) {
+			$("#headerContainer").width($windowSize-20);
+			$("#footer").width($windowSize-10);
 			$("nav").addClass("small-screen");
 			$("#smallNavMenu").show();
 		} else {
-			$("#headerContainer").width(950);
-			$("#footer").width(950);
+			$("#headerContainer").width($("#mainarea").width()+10);
+			$("#footer").width($("#mainarea").width());
 			$("nav").removeClass("small-screen");
 			$("#smallNavMenu").hide();
 		}
