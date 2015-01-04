@@ -2,7 +2,7 @@
 
 // Current version
 global $forumVersion;
-$forumVersion = "2.1.1";
+$forumVersion = "2.1.1a";
 
 // Initialize the template... mainly little settings.
 function template_init()
@@ -393,8 +393,8 @@ echo '
 			<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '">
 				<div id="searchTextfield">
 					<input id="searchSelField" type="text" name="search" placeholder="Search…" />
-					<a href="">Advanced Search</a>
-					<a href="">Search Members</a>
+					<a href="?action=search">Advanced Search</a>
+					<a href="?action=mlist;sa=search">Search Members</a>
 				</div>
 				<input id="searchMag" type="submit" value="" />';
 				// Search within current topic?
@@ -582,20 +582,19 @@ echo '
             // Alerts image override
             $("#alerts_image").attr("src", "'.$settings['theme_url'].'/images/alerts/TheNotificationsSystemIsPoorlyWritten.png");
 
+            // Hide search dropdown on click
+            $(document).mousedown(function(e) {
+            	if(!$("#searchSelField").is(e.target)) {
+            		searchTimeOut = window.setTimeout(hideSearchTooltip, 50);
+            	}
+            });
+
             // Have quick reply ready by default
-            oQuickReply.swap();
-
-
-            $("input#searchMag").mousemove(function () {
-				if ($("div#searchTextfield input").text().length == 0) {
-            		searchTimeOut = window.setTimeout(function () { $("#searchTextfield").hide() }, 50);
-				}
-			});
-
-
-			$(document).mousedown(function() {
-				$("#wrapper").hide();
-			});
+            try {
+            	oQuickReply.swap();
+            } catch (e) {
+            	console.log("> implying quick reply should be here");
+            }
     });
 
     // Search drop down
@@ -609,6 +608,7 @@ echo '
     $("input#searchMag").mouseleave(function () {
     	searchTimeOut = window.setTimeout(hideSearchTooltip, 50);
     });
+
 
     // window.clearTimeout(timeOut)
     $("div#searchTextfield").mouseenter(function () {
@@ -635,7 +635,9 @@ echo '
     function hideSearchTooltip () {
 		$("#searchTextfield").hide();
 		$("input#searchMag").removeClass("checking-search");
+		window.clearTimeout(searchTimeOut);
     }
+
     </script>';
 
 	echo '

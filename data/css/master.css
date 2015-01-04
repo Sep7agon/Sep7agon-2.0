@@ -765,12 +765,25 @@ tbody.header td.catbg, div.roundframe div.cat_bar h3.catbg {
     background-color: rgba(50, 50, 50, 0.7);
 }
 
+#forumposts {
+    background: none;
+}
+
 #forumposts * .windowbg {
-    background-color: #282828;
+    padding: 10px 0;
 }
 
 #forumposts * .windowbg2 {
-    background-color: #282828;
+    padding: 10px 0;
+    background-color: rgba(25, 25, 25, 0.9);
+}
+
+.topslice, .botslice, .topslice span, .botslice span {
+    background: none !important;
+}
+
+#forumposts .cat_bar {
+    margin: 0;
 }
 
 table.table_grid td {
