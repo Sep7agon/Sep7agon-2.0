@@ -135,7 +135,7 @@ a:link, a:visited, a:active {
 }
 
 #headerContainer nav ul li a {
-    color: #666;
+    color: #7b7b7b;
     text-decoration: none;
 }
 
@@ -166,23 +166,45 @@ a:link, a:visited, a:active {
     border-right: 1px solid rgba(60, 60, 60, 0.31);
 }
 
-#headerContainer #searchTool form input[type=text], #headerContainer #searchTool form input[type=submit] {
+#headerContainer #searchTool form input[type=submit] {
     margin: 8px 0 0 0;
     border: none !important;
 }
 
-#headerContainer #searchTool form input[type=text] {
-    display: none;
+#searchTextfield {
     float: left;
+    width: 146px;
+    background: rgba(10, 10, 10, 0.92);
     position: fixed;
+    top: 50px;
+    display: none;
+}
+
+#searchTextfield a {
+    width: 100%;
+    display: block;
+    padding: 10px;
     color: #666;
+    font-family: 'Play', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#searchTextfield a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+#headerContainer #searchTool form input[type=text] {
+    color: rgba(174, 174, 174, 0.74);
     height: 50px;
     padding: 0 10px;
-    margin: 0 0 0 -146px;
     font: normal 12px Arial, sans-serif;
-    background-color: rgba(25, 25, 25, 0.90);
-    -webkit-box-shadow: -8px 0 5px 0 rgba(0,0,0,0.6);
-    box-shadow: -8px 0 5px 0 rgba(0,0,0,0.6);
+    background-color: rgba(45, 45, 45, 0.90);
+    border: none !important;
+    border-bottom: 1px solid rgba(140, 140, 140, 0.4);
+    margin: 0;
+    clear: both;
 }
 
 #headerContainer #searchTool form input[type=submit] {
@@ -193,8 +215,8 @@ a:link, a:visited, a:active {
     margin: 0;
 }
 
-#headerContainer #searchTool form input[type=text]:hover, #headerContainer #searchTool form input[type=submit]:hover {
-    background-color: rgba(30, 30, 30, 0.96);
+#headerContainer #searchTool form input[type=text]:hover, #headerContainer #searchTool form input[type=submit]:hover, .checking-search {
+    background-color: rgba(30, 30, 30, 0.96) !important;
 }
 
 #headerContainer #searchTool form input[type=submit]:hover {
@@ -633,7 +655,7 @@ img.alerts_va, #alerts_counter {
     border-radius: 5px;
 }
 
-
+/*
 .dropmenu li {
     position: inherit;
     border-radius: 5px;
@@ -644,6 +666,7 @@ img.alerts_va, #alerts_counter {
     border-radius: 5px;
     padding: 0 5px;
 }
+
 
 .dropmenu li ul,
 .dropmenu li a.active, .dropmenu li a.active span.firstlevel,
@@ -660,6 +683,14 @@ img.alerts_va, #alerts_counter {
     color: whitesmoke;
     background: rgba(50, 50, 50, 0.8) none;
     border-radius: 5px;
+}
+
+.dropmenu li a.active {
+    background: url("../../images/theme/menu_gfx.png");
+} */
+
+.dropmenu li li.additional_items {
+    background: none;
 }
 
 /* Main page button override to fix position */

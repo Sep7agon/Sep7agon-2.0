@@ -2,7 +2,7 @@
 
 // Current version
 global $forumVersion;
-$forumVersion = "2.1.0a";
+$forumVersion = "2.1.0b";
 
 // Initialize the template... mainly little settings.
 function template_init()
@@ -79,11 +79,11 @@ echo '<head>';
 			.spacemaker {
 				clear:both; height: 100px;
 			}
-			
+
 			table.table_list tbody.content td.stats {
 				display: none !important;
 			}
-			
+
 			table.table_list tbody.content td.lastpost {
 				display: none !important;
 			}
@@ -98,11 +98,11 @@ echo '<head>';
 				background: #111111;
 				border-bottom: 1px solid #424242;
 			}
-			
+
 			table.table_list tbody.content td.stats {
 				display: none !important;
 			}
-			
+
 			table.table_list tbody.content td.lastpost {
 				display: none !important;
 			}
@@ -391,7 +391,11 @@ echo '
 		echo '
 		<div id="searchTool">
 			<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '">
-				<input id="searchTextfield" type="text" name="search" placeholder="Search…" />
+				<div id="searchTextfield">
+					<input id="searchSelField" type="text" name="search" placeholder="Search…" />
+					<a href="">Advanced Search</a>
+					<a href="">Search Members</a>
+				</div>
 				<input id="searchMag" type="submit" value="" />';
 				// Search within current topic?
 				if (!empty($context['current_topic']))
@@ -599,17 +603,45 @@ echo '
           });
 
          $("input#searchMag").mouseleave(function () {
-            searchTimeOut = window.setTimeout(function () { $("#searchTextfield").hide() }, 500);
+			if ($("div#searchTextfield input").text().length == 0) {
+            	searchTimeOut = window.setTimeout(function () { $("#searchTextfield").hide() }, 500);
+			}
           });
 
           // window.clearTimeout(timeOut)
-          $("input#searchTextfield").mouseenter(function () {
+          $("div#searchTextfield").mouseenter(function () {
             window.clearTimeout(searchTimeOut)
+            $("input#searchMag").addClass("checking-search");
           });
 
-         $("input#searchTextfield").mouseleave(function () {
-            $("#searchTextfield").hide();
+         $("div#searchTextfield").mouseleave(function () {
+         	if ($("#searchSelField").val().length == 0) {
+				$("#searchTextfield").hide();
+				$("input#searchMag").removeClass("checking-search");
+            }
           });
+
+         $("div#searchTextfield").onmousemove(function () {
+         	if ($("#searchSelField").val().length == 0) {
+				$("#searchTextfield").hide();
+				$("input#searchMag").removeClass("checking-search");
+            }
+          });
+
+         $("div#searchTextfield").bind("keyup", function () {
+         	if ($("#searchSelField").val() == "") {
+				$("#searchTextfield").hide();
+				$("input#searchMag").removeClass("checking-search");
+            }
+          });
+
+		function checkChange($this){
+			var value = $this.val();
+			var sv=$this.data("stored");
+			if(value!=sv) {
+				$this.trigger("change");
+			}
+		}
     </script>';
 
 	echo '
