@@ -403,6 +403,10 @@ echo '
 				echo '<li><a href="'.$boardurl.'/index.php?board=3.0">Septagon</a></li>';
 				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']))
 					echo '<li><a href="'.$boardurl.'/index.php?board=2.0">HQ</a></li>';
+				if (!$context['user']['is_logged']) {
+					echo '<li><a href="'.$boardurl.'/index.php?action?=login">Login</a></li>';
+					echo '<li><a href="'.$boardurl.'/index.php?action?=register">Sign up</a></li>';
+				}
 				echo '</ul></li>';
 			echo '
 			</ul>';
@@ -547,7 +551,7 @@ echo '
 			echo '
 						<div id="forumTestVersion">
 							<div id="forumTestVersionWrap">
-								<p>DEV. '.$forumVersion.'</p>
+								<p>REL. '.$forumVersion.'</p>
 							</div>
 						</div>
 					';
