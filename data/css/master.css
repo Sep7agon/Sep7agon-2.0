@@ -27,7 +27,7 @@ header * {
 }
 
 body {
-    background: #1b324a url('../img/bg.png') repeat-x fixed;
+    background: #1b324a url('../img/bg.png') repeat-x fixed center;
     background-size: auto 100%;
     color: whitesmoke;
     line-height: 1.4em;
