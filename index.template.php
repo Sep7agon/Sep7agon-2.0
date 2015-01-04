@@ -294,7 +294,7 @@ else
 	$isthread = 'false';
 
 $anarchy = $context['theme_settings']['anarchy'];
-$forumDev = true;
+$forumDev =  $context['theme_settings']['devmode'];
 
 // Header, and logo
 echo '
@@ -486,7 +486,11 @@ echo '
 			</script>
 			<div id=\"avatarToolbar\">";
 			echo '<div id="avatarContainer">';
-			echo '<div id="avatarBig" style="background-image: url(\''.$context['user']['avatar']['href'].'\')"> </div>';
+			if ($context['user']['avatar']['image']!=null) {
+				echo '<div id="avatarBig" style="background-image: url(\''.$context['user']['avatar']['href'].'\')"> </div>';
+			} else {
+				echo '<div id="avatarBig" style="background-image: url(\''.$settings['theme_url'].'/data/img/MonkeyAvatar.png\')"> </div>';
+			}
 			echo '<h4 class="username"><a class="userProfileLink" href="'.$boardurl.'?action=profile">'.$context['user']['name'].'</a></h4>';
 			echo '<p class=usermotto"><a class="editProfile" href="'.$boardurl.'?action=profile;area=forumprofile">Edit profile…</a></p>';
 			echo '</div>';
@@ -668,6 +672,15 @@ echo '
 	<script type="text/javascript">
 	$(document).ready( function() {
 		if ($(window).width() < 1024) {
+			$("#headerContainer").width($("#mainarea").width());
+			$("#footer").width($("#mainarea").width());
+			$("nav").addClass("small-screen");
+			$("#smallNavMenu").show();
+		}
+	});
+
+	$(window).resize( function() {
+		if ($(window).width() < 960) {
 			$("#headerContainer").width($("#mainarea").width());
 			$("#footer").width($("#mainarea").width());
 			$("nav").addClass("small-screen");

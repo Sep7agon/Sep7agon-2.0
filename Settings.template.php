@@ -246,6 +246,10 @@ function template_settings()
 			'id' => 'anarchy',
 			'label' => 'Anarchy',
 		),
+		array (
+			'id' => 'devmode',
+			'label' => 'Enable developer mode?',
+		)
 	);
 }
 
