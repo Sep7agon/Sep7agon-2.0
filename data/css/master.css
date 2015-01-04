@@ -166,6 +166,10 @@ a:link, a:visited, a:active {
     display: none;
 }
 
+#smallNavMenu {
+    display: none;
+}
+
 #smallNavMenu li.menuBtn {
     background: rgba(10, 10, 10, 0.5) url('../img/smallMenuBtn.png') no-repeat center;
     width: 50px;
