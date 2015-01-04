@@ -354,7 +354,7 @@ echo '
 
 			// Anarchy
 
-			if ($context['user']['is_logged'] && $anarchy && (in_array(1,$user_info['groups']) ||
+			if ($context['allow_admin'] && $anarchy || (in_array(1,$user_info['groups']) ||
 					in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) ||
 						in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))) {
 				echo '<li><a';
@@ -362,7 +362,6 @@ echo '
 					echo ' class="current_b"';
 					$b_href= '?board=8.0';
 					$banner='b_anarchy';
-					$anarchy = true;
 				}
 				echo ' href="',$boardurl,'/index.php?board=8.0">Anarchy</a></li>';
 			}

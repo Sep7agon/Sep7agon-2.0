@@ -837,7 +837,15 @@ table.table_grid td {
 
 #messageindex tr:nth-child(even),
 #messageindex tr:nth-child(even) td {
-    background-color: rgba(50, 50, 50, 0.3) !important;
+    background-color: rgba(50, 50, 50, 0.3);
+}
+
+.stickybg, .stickybg2 {
+	background-color: #333 !important;
+}
+
+.stickybg::last-of-type, .stickybg2::last-of-type {
+	border-bottom: 1px solid #444;
 }
 
 /* Title override */
@@ -908,6 +916,7 @@ tr.titlebg th.last_th, tr.titlebg th, tr.titlebg th.first_th, div.title_bar, h4.
 
 div.poster ul div div {
     margin: 4px auto -1px !important;
+	max-height: none !important;
 }
 
 div.poster ul div {
