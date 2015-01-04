@@ -202,7 +202,7 @@ a:link, a:visited, a:active {
     font: normal 12px Arial, sans-serif;
     background-color: rgba(45, 45, 45, 0.90);
     border: none !important;
-    border-bottom: 1px solid rgba(140, 140, 140, 0.4);
+    border-bottom: 1px solid rgba(140, 140, 140, 0.1) !important;
     margin: 0;
     clear: both;
 }

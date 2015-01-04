@@ -2,7 +2,7 @@
 
 // Current version
 global $forumVersion;
-$forumVersion = "2.1.0b";
+$forumVersion = "2.1.1";
 
 // Initialize the template... mainly little settings.
 function template_init()
@@ -192,7 +192,7 @@ echo '<head>';
 	// Here comes the JavaScript bits!
 	echo '
 	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/script.js"></script>
-	<script type="text/javascript" src="', $settings['theme_url'], '/data/scripts/theme.js"></script>
+	<script type="text/javascript" src="', $settings['theme_url'], '/data/js/theme.js"></script>
 	<script type="text/javascript"><!-- // --><![CDATA[
 		var smf_theme_url = "', $settings['theme_url'], '";
 		var smf_default_theme_url = "', $settings['default_theme_url'], '";
@@ -445,7 +445,7 @@ echo '
 
 				$(\"#avatarControls\").mouseleave(function () {
 					if ($(\"#avatarToolbar\").hasClass(\"menu-open\")) {
-						timeOutAvatar = window.setTimeout(fadeAvatarMenu, 500);
+						timeOutAvatar = window.setTimeout(fadeAvatarMenu, 50);
 						$(\"#avatarToolbar\").mouseenter(function () { window.clearTimeout(timeOutAvatar) });
 						$(\"#avatarToolbar\").mouseleave(function () { fadeAvatarMenu() });
 					}
@@ -531,18 +531,6 @@ echo '
     <script type="text/javascript">
         $(document).ready(function () {
         	$(\'#NotLoggedIn\').show();
-        	/*
-            if ($(\'#navMenu li\').length == 6) {
-                /* $(\'#userControls ul\').hide();
-                $(\'#userControls\').attr("id", "userControlsSmall");
-                $(\'#headerContainer\').css("width","1200px");
-            } else if ($(\'#navMenu li\').length >= 7) {
-                $(\'#headerContainer\').css("width","1220px");
-
-            } else if ($("#navMenu li").length == 5) {
-				$(\'#headerContainer\').css("width","983px");
-            }
-            */
 
             if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length > 5) {
             	$("#navMenu li").css("padding", "0px 26px"); // Normal member with anarchy
@@ -593,55 +581,58 @@ echo '
 
             // Have quick reply ready by default
             oQuickReply.swap();
-		});
 
-		var searchTimeOut;
 
-		// The searchbar...
-         $("input#searchMag").mouseenter(function () {
-            $("#searchTextfield").show();
-          });
+            $("input#searchMag").mousemove(function () {
+				if ($("div#searchTextfield input").text().length == 0) {
+            		searchTimeOut = window.setTimeout(function () { $("#searchTextfield").hide() }, 50);
+				}
+			});
 
-         $("input#searchMag").mouseleave(function () {
-			if ($("div#searchTextfield input").text().length == 0) {
-            	searchTimeOut = window.setTimeout(function () { $("#searchTextfield").hide() }, 500);
-			}
-          });
 
-          // window.clearTimeout(timeOut)
-          $("div#searchTextfield").mouseenter(function () {
-            window.clearTimeout(searchTimeOut)
-            $("input#searchMag").addClass("checking-search");
-          });
+			$(document).mousedown(function() {
+				$("#wrapper").hide();
+			});
+    });
 
-         $("div#searchTextfield").mouseleave(function () {
-         	if ($("#searchSelField").val().length == 0) {
-				$("#searchTextfield").hide();
-				$("input#searchMag").removeClass("checking-search");
-            }
-          });
+    // Search drop down
+	var searchTimeOut;
 
-         $("div#searchTextfield").onmousemove(function () {
-         	if ($("#searchSelField").val().length == 0) {
-				$("#searchTextfield").hide();
-				$("input#searchMag").removeClass("checking-search");
-            }
-          });
+	// The searchbar...
+	$("input#searchMag").mouseenter(function () {
+    	$("#searchTextfield").show();
+    });
 
-         $("div#searchTextfield").bind("keyup", function () {
-         	if ($("#searchSelField").val() == "") {
-				$("#searchTextfield").hide();
-				$("input#searchMag").removeClass("checking-search");
-            }
-          });
+    $("input#searchMag").mouseleave(function () {
+    	searchTimeOut = window.setTimeout(hideSearchTooltip, 50);
+    });
 
-		function checkChange($this){
-			var value = $this.val();
-			var sv=$this.data("stored");
-			if(value!=sv) {
-				$this.trigger("change");
-			}
-		}
+    // window.clearTimeout(timeOut)
+    $("div#searchTextfield").mouseenter(function () {
+    	window.clearTimeout(searchTimeOut)
+    	$("input#searchMag").addClass("checking-search");
+    	// Hide alerts and avatar menu
+		$("#avatarToolbar").hide();
+		$("#alerts").hide();
+    });
+
+    $("div#searchTextfield").mouseleave(function () {
+    	if ($("#searchSelField").val().length == 0) {
+    		hideSearchTooltip();
+    	}
+    });
+
+
+    $("div#searchTextfield").bind("keyup", function () {
+    	if ($("#searchSelField").val().length == 0) {
+    		hideSearchTooltip();
+    	}
+	});
+
+    function hideSearchTooltip () {
+		$("#searchTextfield").hide();
+		$("input#searchMag").removeClass("checking-search");
+    }
     </script>';
 
 	echo '
