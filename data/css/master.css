@@ -418,6 +418,7 @@ a.editProfile:hover {
 #headerContainer #userControls a {
     color: #666;
     text-decoration: none;
+
 }
 
 #headerContainer #userControls a:hover {
@@ -437,8 +438,12 @@ a.editProfile:hover {
     font-size: 12px;
 }
 
+#headerContainer #userControls ul li a:first-child {
+    height: 50px !important;
+    display: block;
+}
+
 #headerContainer #userControls ul li:hover {
-    cursor: pointer;
     color: whitesmoke;
 }
 
@@ -449,12 +454,11 @@ a.editProfile:hover {
 #headerContainer #userControls ul li#adminIcon a.showAdmin,
 #headerContainer #userControls ul li#modIcon a.showMod {
     width: 16px;
-    height: 16px;
-    margin-top: 15px;
     background-repeat: no-repeat;
     background-position: center;
     display: block;
 }
+
 
 ul.dropit-submenu, #avatarToolbar {
     margin-left: -180px !important;
