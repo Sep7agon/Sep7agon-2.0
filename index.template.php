@@ -1,4 +1,9 @@
 <?php
+
+// Current version
+global $forumVersion;
+$forumVersion = "2.2.0";
+
 // Initialize the template... mainly little settings.
 function template_init()
 {
@@ -41,7 +46,7 @@ function template_init()
 // The main sub template above the content.
 function template_html_above()
 {
-	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl;
+	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl, $forumVersion;
 
 	// Show right to left and the character set for ease of translating.
 	echo '<!doctype html>
@@ -58,7 +63,7 @@ function template_html_above()
      \__/
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V 2.0.1e]=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-[V '.$forumVersion.']=-=-=-=-
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 -->
 <html lang="en"', $context['right_to_left'] ? ' dir="rtl"' : '', '>';
@@ -74,11 +79,11 @@ echo '<head>';
 			.spacemaker {
 				clear:both; height: 100px;
 			}
-			
+
 			table.table_list tbody.content td.stats {
 				display: none !important;
 			}
-			
+
 			table.table_list tbody.content td.lastpost {
 				display: none !important;
 			}
@@ -93,11 +98,11 @@ echo '<head>';
 				background: #111111;
 				border-bottom: 1px solid #424242;
 			}
-			
+
 			table.table_list tbody.content td.stats {
 				display: none !important;
 			}
-			
+
 			table.table_list tbody.content td.lastpost {
 				display: none !important;
 			}
@@ -112,39 +117,39 @@ echo '<head>';
 		.b_index {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_index.png") no-repeat left top;
 		}
-		
+
 		.b_flood {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_flood.png") no-repeat left top;
 		}
-		
+
 		.b_serious {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_serious.png") no-repeat left top;
 		}
-		
+
 		.b_gaming {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_gaming.png") no-repeat left top;
 		}
-		
+
 		.b_support {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_support.png") no-repeat left top;
 		}
-		
+
 		.b_updates {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_updates.png") no-repeat left top;
 		}
-		
+
 		.b_art {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_art.png") no-repeat left top;
 		}
-		
+
 		.b_anarchy {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_rapture.png") no-repeat left top;
 		}
-		
+
 		.b_hq {
 			background: url("',$settings['theme_url'],'/data/img/boards/b_hq.png") no-repeat left top;
 		}
-		
+
 		.banner {
 			text-decoration: none;
 			width: 100%;
@@ -153,7 +158,7 @@ echo '<head>';
 			padding: auto;
 			float: left;
 		}
-		
+
 		.banner:hover {
 			text-decoration: none;
 		}
@@ -166,29 +171,28 @@ echo '<head>';
 			background-image: url("'.$settings['theme_url'].'/images/alerts/alerts-inactive.png");
 		}
 
-		/* 	-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+		/* 	-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 			-=-=-=-=- Board Settings END -=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=--=-=-=-=- */
 	</style>';
 
-	// The ?fin20 part of this link is just here to make sure browsers don't cache it wrongly.
 	echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css?fin20" />';
+	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/data/css/index', $context['theme_variant'], '.css?',date('ddmmyyyytt'),'" />';
 
 	// Some browsers need an extra stylesheet due to bugs/compatibility issues.
 	foreach (array('ie7', 'ie6', 'webkit') as $cssfix)
 		if ($context['browser']['is_' . $cssfix])
 			echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['default_theme_url'], '/css/', $cssfix, '.css" />';
+	<link rel="stylesheet" type="text/css" href="', $settings['default_theme_url'], '/css/', $cssfix, '.css?',date('ddmmyyyytt'),'" />';
 
 	// RTL languages require an additional stylesheet.
 	if ($context['right_to_left'])
 		echo '
-	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/css/rtl.css" />';
-	
+	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/data/css/rtl.css?',date('ddmmyyyytt'),'" />';
+
 	// Here comes the JavaScript bits!
 	echo '
 	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/script.js"></script>
-	<script type="text/javascript" src="', $settings['theme_url'], '/scripts/theme.js"></script>
+	<script type="text/javascript" src="', $settings['theme_url'], '/data/js/theme.js"></script>
 	<script type="text/javascript"><!-- // --><![CDATA[
 		var smf_theme_url = "', $settings['theme_url'], '";
 		var smf_default_theme_url = "', $settings['default_theme_url'], '";
@@ -206,13 +210,13 @@ echo '<head>';
 		var ajax_notification_cancel_text = "', $txt['modify_cancel'], '";
 	// ]]></script>';
 
-	include('../../catchphrase.php');
+	include('catchphrase.php');
 
 	if ($context['page_title_html_safe'] == 'Sep7agon - Index')
 		$pagetitle = 'Sep7agon | ' . $outputphrase;
 	else
 		$pagetitle = $context['page_title_html_safe'];
-	
+
 	echo '
 	<meta http-equiv="Content-Type" content="text/html; charset=', $context['character_set'], '" />
 	<meta name="description" content="', $context['page_title_html_safe'], '" />', !empty($context['meta_keywords']) ? '
@@ -281,24 +285,28 @@ include_once("analyticstracking.php");
 
 function template_body_above()
 {
-	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl, $user_info;
+	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl, $user_info, $forumVersion;
 	//echo $context['tapatalk_body_hook'];
 
 if ($context['current_topic'] >= 1)
 	$isthread = 'true';
 else
 	$isthread = 'false';
-	
-$anarchy = false;
-	
+
+$anarchy = $context['theme_settings']['anarchy'];
+$forumDev =  $context['theme_settings']['devmode'];
+
 // Header, and logo
 echo '
 	<div id="container">
 	<header>
 		<div id="headerContainer">
+
+
 			<div id="branding">
 				<a href="'.$boardurl.'">sep7agon</a>
 			</div>';
+
 			// Navigation
 			echo '
 		<nav>
@@ -307,7 +315,7 @@ echo '
 				$banner='b_index';
 				$b_href= $boardurl;
 			}
-			
+
 			// News
 			echo '<li><a';
 			if ($context['current_board'] == 5) {
@@ -316,7 +324,7 @@ echo '
 				$banner='b_updates';
 			}
 			echo ' href="',$boardurl,'/index.php?board=5.0">News</a></li>';
-			
+
 			// The Flood
 			echo '<li><a';
 			if ($context['current_board'] == 1) {
@@ -325,17 +333,16 @@ echo '
 				$banner='b_flood';
 			}
 			echo ' href="',$boardurl,'/index.php?board=1.0">The Flood</a></li>';
-			
+
 			// Serious
 			echo '<li><a';
-			echo '<span class="forummenu"><a';
 			if ($context['current_board'] == 6) {
 				echo ' class="current_b"';
 				$b_href= '?board=6.0';
 				$banner='b_serious';
 			}
-			echo ' href="',$boardurl,'/index.php?board=6.0">Serious</a></span>';
-			
+			echo ' href="',$boardurl,'/index.php?board=6.0">Serious</a></li>';
+
 			// Gaming
 			echo '<li><a';
 			if ($context['current_board'] == 4) {
@@ -344,20 +351,21 @@ echo '
 				$banner='b_gaming';
 			}
 			echo ' href="',$boardurl,'/index.php?board=4.0">Gaming</a></li>';
-			
+
 			// Anarchy
 
-			if ($context['user']['is_logged'] && $anarchy || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']) || in_array(69,$user_info['groups'])) {
+			if ($context['allow_admin'] && $anarchy || (in_array(1,$user_info['groups']) ||
+					in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) ||
+						in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))) {
 				echo '<li><a';
 				if ($context['current_board'] == 8) {
 					echo ' class="current_b"';
 					$b_href= '?board=8.0';
 					$banner='b_anarchy';
-					$anarchy = true;
 				}
 				echo ' href="',$boardurl,'/index.php?board=8.0">Anarchy</a></li>';
 			}
-			
+
 			// Septagon
 			echo '<li><a';
 			if ($context['current_board'] == 3) {
@@ -366,7 +374,7 @@ echo '
 				$banner='b_support';
 			}
 			echo ' href="',$boardurl,'/index.php?board=3.0">Septagon</a></li>';
-			
+
 			// HQ
 			if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups'])) {
 				echo '<li><a';
@@ -378,14 +386,41 @@ echo '
 				echo ' href="',$boardurl,'/index.php?board=2.0">HQ</a></li>';
 			}
 			echo '
-			</ul>
+			</ul>';
+			echo '
+			<ul id="smallNavMenu">';
+				echo '<li class="menuBtn"><a class="menuBtnLink" href="#">Menu</a>';
+				echo '<ul id="mobileMenu">';
+
+				echo '<li><a href="'.$boardurl.'/index.php?board=5.0">News</a></li>';
+				echo '<li><a href="'.$boardurl.'/index.php?board=1.0">The Flood</a></li>';
+				echo '<li><a href="'.$boardurl.'/index.php?board=6.0">Serious</a></li>';
+				echo '<li><a href="'.$boardurl.'/index.php?board=4.0">Gaming</a></li>';
+				if ($context['user']['is_logged'] && $anarchy || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))
+					echo '<li><a href="'.$boardurl.'/index.php?board=8.0">Anarchy</a></li>';
+
+				echo '<li><a href="'.$boardurl.'/index.php?board=3.0">Septagon</a></li>';
+				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']))
+					echo '<li><a href="'.$boardurl.'/index.php?board=2.0">HQ</a></li>';
+				if (!$context['user']['is_logged']) {
+					echo '<li><a href="'.$boardurl.'/index.php?action?=login">Login</a></li>';
+					echo '<li><a href="'.$boardurl.'/index.php?action?=register">Sign up</a></li>';
+				}
+				echo '</ul></li>';
+			echo '
+			</ul>';
+		echo '
 		</nav>';
 		// Search
 		echo '
 		<div id="searchTool">
 			<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '">
-				<input type="text" name="search" placeholder="Search…" />
-				<input type="submit" value="" />';
+				<div id="searchTextfield">
+					<input id="searchSelField" type="text" name="search" placeholder="Search…" />
+					<a href="?action=search">Advanced Search</a>
+					<a href="?action=mlist;sa=search">Search Members</a>
+				</div>
+				<input id="searchMag" type="submit" value="" />';
 				// Search within current topic?
 				if (!empty($context['current_topic']))
 				echo '
@@ -409,7 +444,7 @@ echo '
 			$showNotifications = false;
 			$showAvatar = false;
 		}
-		
+
 		echo '
 		<div id="userInfoPane">';
 		if($showNotifications) {
@@ -422,14 +457,25 @@ echo '
 			echo "
 			<script type=\"text/javascript\">
 			$(document).ready(function () {
+				var timeOutAvatar;
+
 				$(\"#avatarControls\").mouseenter(function () {
 					if ($(\"#avatarToolbar\").css(\"display\") == \"none\") {
 						showAvatarMenu();
+						// Hide alerts menu
+						$('#alerts').hide();
+						// Hide other menus
+						$('.dropit-submenu').hide();
+						hideSearchTooltip();
 					}
 				});
 
 				$(\"#avatarControls\").mouseleave(function () {
-					
+					if ($(\"#avatarToolbar\").hasClass(\"menu-open\")) {
+						timeOutAvatar = window.setTimeout(fadeAvatarMenu, 50);
+						$(\"#avatarToolbar\").mouseenter(function () { window.clearTimeout(timeOutAvatar) });
+						$(\"#avatarToolbar\").mouseleave(function () { fadeAvatarMenu() });
+					}
 				});
 
 				function showAvatarMenu() {
@@ -439,14 +485,21 @@ echo '
 
 				function fadeAvatarMenu() {
 					$(\"#avatarToolbar\").hide();
-					$(\"#avatarToolbar\").addClass(\"menu-closed\");
+					$(\"#avatarToolbar\").removeClass(\"menu-open\");
 				}
 			});
 			</script>
 			<div id=\"avatarToolbar\">";
-
-			echo ''.$context['user']['avatar']['img'].'';
-
+			echo '<div id="avatarContainer">';
+			if ($context['user']['avatar']['image']!=null) {
+				echo '<div id="avatarBig" style="background-image: url(\''.$context['user']['avatar']['href'].'\')"> </div>';
+			} else {
+				echo '<div id="avatarBig" style="background-image: url(\''.$settings['theme_url'].'/data/img/MonkeyAvatar.png\')"> </div>';
+			}
+			echo '<h4 class="username"><a class="userProfileLink" href="'.$boardurl.'?action=profile">'.$context['user']['name'].'</a></h4>';
+			echo '<p class=usermotto"><a class="editProfile" href="'.$boardurl.'?action=profile;area=forumprofile">Edit profile…</a></p>';
+			echo '</div>';
+			template_menu();
 			echo "</div>";
 			if ($context['user']['avatar']['image']!=null) {
 				echo '<div id="avatar" style="background-image: url(\'',$context['user']['avatar']['href'],'\');">';
@@ -454,7 +507,7 @@ echo '
 				echo '<div id="avatar" style="background-image: url(\'',$settings['theme_url'],'/data/img/MonkeyAvatar.png\');">';
 			}
 
-			echo '<a id="avatarControls">'.$context['user']['name'].'</a>';
+			echo '<a id="avatarControls" href="'.$boardurl.'?action=profile">'.$context['user']['name'].'</a>';
 			echo ' </div>';
 		}
 			echo '
@@ -474,31 +527,61 @@ echo '
 			';
 		} else {
 			//template_menu();
+			echo '
+			<ul id="usrCommandMenu">';
+
+				// Display PM icon
+				pmIcon();
+
+				// Display admin icon
+				if ($context['user']['is_admin']) {
+					adminIcon();
+				}
+
+				// Display mod icon
+				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups'])) {
+					modIcon();
+				} echo '
+			</ul>';
 		}
-		echo '</div>';
+		echo '</div>
+		</div>';
+		if ($forumDev) {
+			echo '
+						<div id="forumTestVersion">
+							<div id="forumTestVersionWrap">
+								<p>REL. '.$forumVersion.'</p>
+							</div>
+						</div>
+					';
+		}
 		echo '
-		</div>
 	</header>';
+
 	echo '
     <script type="text/javascript">
         $(document).ready(function () {
         	$(\'#NotLoggedIn\').show();
-            if ($(\'#navMenu li\').length == 6) {
-                /* $(\'#userControls ul\').hide();
-                $(\'#userControls\').attr("id", "userControlsSmall"); */
-                $(\'#headerContainer\').css("width","1200px");
-            } else if ($(\'#navMenu li\').length >= 7) {
-                $(\'#headerContainer\').css("width","1220px");
 
-            } else if ($("#navMenu li").length == 5) {
-				$(\'#headerContainer\').css("width","983px");
+            if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length > 5) {
+            	$("#navMenu li").css("padding", "0px 26px"); // Normal member with anarchy
+            } else if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length == 5) {
+            	$("#navMenu li").css("padding", "0px 36px"); // Normal member, no extra forums
+            } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length > 6) {
+            	$("#navMenu li").css("padding", "0px 14px"); // Admin with anarchy board
+            } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length == 6) {
+            	$("#navMenu li").css("padding", "0px 22px"); // Admin without Anarchy board
+            } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length == 6) {
+            	$("#navMenu li").css("padding", "0px 18px"); // Moderator with HQ
+            } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length > 6) {
+				$("#navMenu li").css("padding", "0px 18px"); // Moderator with HQ and Anarchy
+            } else if ($("#userControls ul li.menuOption").length == 0) {
+            	$("#navMenu li").css("padding", "0px 25px"); // Guest
             }
 
-            if ($(\'#navMenu li\').length > 6) {
-                $(\'#NotLoggedIn\').css("width", "160px");
-            }
 
             $(\'#usrCommandMenu\').dropit({action: \'hover\'});
+            $(\'#smallNavMenu\').dropit({action: \'click\'});
 
             $("\'[placeholder]\'").focus(function() {
                 var input = $(this);
@@ -514,14 +597,117 @@ echo '
                 }
             }).blur();
 
+            // Check size of the username under avatar
+            if ($("#avatarToolbar h4 a.userProfileLink").text().length > 12 && $("#avatarToolbar h4 a.userProfileLink").text().length <= 14) {
+				$("#avatarToolbar h4 ").css("font-size", $("#avatarToolbar h4 a.userProfileLink").text().length*0.9+"px");
+            } else if ($("#avatarToolbar h4 a.userProfileLink").text().length > 14 && $("#avatarToolbar h4 a.userProfileLink").text().length <=16) {
+				$("#avatarToolbar h4 ").css("font-size", $("#avatarToolbar h4 a.userProfileLink").text().length*0.7+"px");
+            } else if ($("#avatarToolbar h4 a.userProfileLink").text().length > 16) {
+            	$("#avatarToolbar").css("width", "300px");
+            	$("#avatarToolbar h4 ").css("font-size", "12px");
+            	$("#avatarToolbar p").css("width", "160px");
+            }
+
             // Alerts image override
             $("#alerts_image").attr("src", "'.$settings['theme_url'].'/images/alerts/TheNotificationsSystemIsPoorlyWritten.png");
-		});
+
+            // Hide search dropdown on click
+            $(document).mousedown(function(e) {
+            	if(!$("#searchSelField").is(e.target)) {
+            		searchTimeOut = window.setTimeout(hideSearchTooltip, 50);
+            	}
+            });
+
+            // Have quick reply ready by default
+            try {
+            	oQuickReply.swap();
+            } catch (e) {
+            	console.log("> implying quick reply should be here");
+            }
+    });
+
+    // Search drop down
+	var searchTimeOut;
+
+	// The searchbar...
+	$("input#searchMag").mouseenter(function () {
+    	$("#searchTextfield").show();
+    });
+
+    $("input#searchMag").mouseleave(function () {
+    	searchTimeOut = window.setTimeout(hideSearchTooltip, 50);
+    });
+
+
+    // window.clearTimeout(timeOut)
+    $("div#searchTextfield").mouseenter(function () {
+    	window.clearTimeout(searchTimeOut)
+    	$("input#searchMag").addClass("checking-search");
+    	// Hide alerts and avatar menu
+		$("#avatarToolbar").hide();
+		$("#alerts").hide();
+    });
+
+    $("div#searchTextfield").mouseleave(function () {
+    	if ($("#searchSelField").val().length == 0) {
+    		hideSearchTooltip();
+    	}
+    });
+
+
+    $("div#searchTextfield").bind("keyup", function () {
+    	if ($("#searchSelField").val().length == 0) {
+    		hideSearchTooltip();
+    	}
+	});
+
+    function hideSearchTooltip () {
+		$("#searchTextfield").hide();
+		$("input#searchMag").removeClass("checking-search");
+		window.clearTimeout(searchTimeOut);
+    }
 
     </script>';
-	
+
 	echo '
-<div class="spacemaker">&nbsp;</div>
+<div class="spacemaker">&nbsp;</div>';
+
+	// Screen and mobile
+	echo '
+	<script type="text/javascript">
+	$(document).ready( function() {
+		if ($(window).width() < 1024) {
+			$("#headerContainer").width($("#mainarea").width()-50);
+			$("#footer").width($("#mainarea").width());
+			$("nav").addClass("small-screen");
+			$("#smallNavMenu").show();
+		}
+	});
+
+	$(window).resize( function() {
+		$windowSize = $(window).width();
+		if ($windowSize <= 960) {
+			$("#headerContainer").width($windowSize-20);
+			$("#footer").width($windowSize-10);
+			$("nav").addClass("small-screen");
+			$("#smallNavMenu").show();
+		} else {
+			$("#headerContainer").width($("#mainarea").width()+10);
+			$("#footer").width($("#mainarea").width());
+			$("nav").removeClass("small-screen");
+			$("#smallNavMenu").hide();
+			$("#NotLoggedIn").show();
+		}
+
+		if($windowSize <=600) {
+			$("#NotLoggedIn").hide();
+		}
+	});
+	</script>';
+
+
+
+		echo '
 		<div id="wrapper">';
 			echo '<a class="';
 			echo $banner;
@@ -568,10 +754,99 @@ echo '
 			if ($context['current_topic'] >= 1)
 				echo '<div class="mainad" id="mainarea">';
 			else
-				echo '<div id="mainarea">'; 
+				echo '<div id="mainarea">';
 
+			// Show board description
+			if (!empty($options['show_board_desc']) && $context['description'] != '')
+				echo '<p class="description_board">', $context['description'], '</p>';
 			// Show the navigation tree.
 			theme_linktree();
+
+}
+
+function hasMessages() {
+	global $context;
+
+	if ($context['user']['unread_messages'] > 0) {
+		return true;
+	}
+
+	return false;
+}
+
+function pmIcon() {
+	global $settings, $boardurl;
+
+	// Link to PM page
+	$pmLink = $boardurl.'?action=pm';
+
+	// Display PM icon
+	echo '
+	<li id="pmIcon" class="menuOption">
+		<a class="';
+	if (hasMessages()) {
+		echo 'new-message" href="'.$pmLink.'" style="background-image: url(\''.$settings['theme_url'].'/data/img/newmail.png\')"> </a>';
+	} else {
+		echo 'no-message" href="'.$pmLink.'" style="background-image: url(\''.$settings['theme_url'].'/data/img/mail.png\')"> </a>';
+	}
+	echo '
+		<ul>';
+		// Generate the dropdown menu options
+		displaySpecificMenu("pm");
+		echo '
+		</ul>';
+	echo '
+	</li>';
+}
+
+function adminIcon() {
+	global $settings, $boardurl;
+
+	// Display admin icon
+	echo '<li id="adminIcon" class="menuOption">';
+
+	// Display the icon as a link
+	echo '<a class="showAdmin" href="'.$boardurl.'?action=admin" style="background-image: url(\''.$settings['theme_url'].'/data/img/tadmin.png\')"> </a>';
+
+	// Get the admin submenu
+	echo '<ul>';
+	displaySpecificMenu("admin");
+	echo '</ul>';
+	echo '</li>';
+}
+
+function modIcon() {
+	global $settings, $boardurl;
+
+	// Display mod icon
+	echo '<li id="modIcon" class="menuOption">';
+
+	// Display the icon as a link
+	echo '<a class="showMod" href="'.$boardurl.'?action=moderate" style="background-image: url(\''.$settings['theme_url'].'/data/img/tblox.png\')"> </a>';
+
+	// Get the mod submenu
+	echo '<ul>';
+	displaySpecificMenu("moderate");
+	echo '</ul>';
+	echo '</li>';
+}
+
+function displaySpecificMenu($menu) {
+	global $context, $settings, $options, $scripturl, $txt;
+	foreach ($context['menu_buttons'] as $act => $button)
+	{
+		if ($act==$menu) {
+			if (!empty($button['sub_buttons'])) {
+				foreach ($button['sub_buttons'] as $childbutton) {
+					echo '<li>
+					<a href="', $childbutton['href'], '"', isset($childbutton['target']) ? ' target="' .
+						$childbutton['target'] . '"' : '', '><span>', $childbutton['title'],
+					!empty($childbutton['sub_buttons']) ? '...' : '', '</span></a>';
+					echo '</li>';
+				}
+			}
+		}
+	}
 }
 
 function template_body_below()
@@ -579,23 +854,7 @@ function template_body_below()
 	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl;
 
 		echo '
-			</div>'; //Don't believe the helpful purple; it lies because of the if else above...
-			/*if ($context['current_topic'] >= 1) {
-				echo '<div id="sidead>
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- Sep7agon Responsive -->
-					<ins class="adsbygoogle"
-						 style="display:block"
-						 data-ad-client="ca-pub-9422718038809839"
-						 data-ad-slot="5402863603"
-						 data-ad-format="auto"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-				</div><div class="clearad"></div><div class="clearad"></div>';
-			}*/
-
-			// Show the "Powered by" and "Valid" logos, as well as the copyright. Remember, the copyright must be somewhere!
+			</div>';
 		echo '
 		</div>
 			<div id="footer">
@@ -660,7 +919,7 @@ function theme_linktree($force_show = false)
 
 		// Don't show a separator for the last one.
 		if ($link_num != count($context['linktree']) - 1)
-			echo ' &#187;';
+			echo ' <img src="'.$settings['theme_url'].'/data/img/quote.png" />';
 
 		echo '
 			</li>';
@@ -677,7 +936,7 @@ function footerSmall_menu() {
 	global $context, $settings, $options, $scripturl, $txt;
 
 	echo '
-	<ul id="footerSmallUserMenu">
+	<ul id="usrSettingMenu">
 	';
 
 	foreach ($context['menu_buttons'] as $act => $button) {
@@ -728,17 +987,23 @@ function template_menu()
 	global $context, $settings, $options, $scripturl, $txt;
 
 	echo '
-		<ul id="usrCommandMenu">';
+		<ul id="usrAvatarMenu">';
 
 	foreach ($context['menu_buttons'] as $act => $button)
 	{
-		echo '
-				<li id="button_', $act, '">
-					<a class="', $button['active_button'] ? 'active ' : '', '" href="', $button['href'], '"', isset($button['target']) ? ' target="' . $button['target'] . '"' : '', '><span>', $button['title'], '</span></a>';
-		echo '
-				</li>';
+		if ($act=="profile") {
+			if (!empty($button['sub_buttons'])) {
+				foreach ($button['sub_buttons'] as $childbutton) {
+					if ($childbutton['title']!=$context['user']['name']) {
+						echo '
+						<li>
+							<a href="', $childbutton['href'], '"', isset($childbutton['target']) ? ' target="' . $childbutton['target'] . '"' : '', '><span>', $childbutton['title'], !empty($childbutton['sub_buttons']) ? '...' : '', '</span></a>';
+						echo '</li>';
+					}
+				}
+			}
+		}
 	}
-
 	echo '
 			</ul>';
 }

@@ -39,6 +39,11 @@ $.getScript("jquery-1.11.2.min.js");
                         settings.beforeHide.call(this);
                         $('.dropit-open').removeClass('dropit-open').find('.dropit-submenu').hide();
                         settings.afterHide.call(this);
+                        hideSearchTooltip();
+
+                        // Hide alerts and avatar menu
+                        $('#avatarToolbar').hide();
+                        $('#alerts').hide();
 
                         // Open this menu
                         settings.beforeShow.call(this);
@@ -49,7 +54,7 @@ $.getScript("jquery-1.11.2.min.js");
                     });
 
                     // Close if outside click
-                    $(document).on('click', function(){
+                    $('.dropit').on('mouseleave', function(){
                         settings.beforeHide.call(this);
                         $('.dropit-open').removeClass('dropit-open').find('.dropit-submenu').hide();
                         settings.afterHide.call(this);

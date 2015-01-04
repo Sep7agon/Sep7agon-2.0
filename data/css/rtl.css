@@ -110,19 +110,19 @@ table.table_list a.collapse
 }
 .table_grid th.first_th, tr.catbg th.first_th
 {
-	background: url(../images/theme/main_block.png) no-repeat 100% -160px;
+	background: url(../../images/theme/main_block.png) no-repeat 100% -160px;
 }
 .table_grid th.last_th, tr.catbg th.last_th
 {
-	background: url(../images/theme/main_block.png) no-repeat 0 -160px;
+	background: url(../../images/theme/main_block.png) no-repeat 0 -160px;
 }
 tr.titlebg th.first_th
 {
-	background: url(../images/theme/main_block.png) no-repeat 100% -200px;
+	background: url(../../images/theme/main_block.png) no-repeat 100% -200px;
 }
 tr.titlebg th.last_th
 {
-	background: url(../images/theme/main_block.png) no-repeat 0 -200px;
+	background: url(../../images/theme/main_block.png) no-repeat 0 -200px;
 }
 
 /* Styles for the standard dropdown menus.
@@ -144,7 +144,7 @@ tr.titlebg th.last_th
 }
 .dropmenu li ul
 {
-	background: url(../images/theme/menu_gfx.png) 100% -130px no-repeat;
+	background: url(../../images/theme/menu_gfx.png) 100% -130px no-repeat;
 	right: 5px;
 }
 
@@ -1062,7 +1062,7 @@ span.search_weight
 .is_directory
 {
 	padding-right: 18px;
-	background: url(../images/admin/boards.gif) no-repeat;
+	background: url(../../images/admin/boards.gif) no-repeat;
 	background-position: 100% 0;
 }
 /* Styles for the moderation center.
