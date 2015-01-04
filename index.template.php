@@ -2,7 +2,7 @@
 
 // Current version
 global $forumVersion;
-$forumVersion = "2.1.1a";
+$forumVersion = "2.1.2";
 
 // Initialize the template... mainly little settings.
 function template_init()
@@ -385,7 +385,26 @@ echo '
 				echo ' href="',$boardurl,'/index.php?board=2.0">HQ</a></li>';
 			}
 			echo '
-			</ul>
+			</ul>';
+			echo '
+			<ul id="smallNavMenu">';
+				echo '<li class="menuBtn"><a class="menuBtnLink" href="#">Menu</a>';
+				echo '<ul id="mobileMenu">';
+
+				echo '<li><a href="'.$boardurl.'/index.php?board=5.0">News</a></li>';
+				echo '<li><a href="'.$boardurl.'/index.php?board=1.0">The Flood</a></li>';
+				echo '<li><a href="'.$boardurl.'/index.php?board=6.0">Serious</a></li>';
+				echo '<li><a href="'.$boardurl.'/index.php?board=4.0">Gaming</a></li>';
+				if ($context['user']['is_logged'] && $anarchy || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))
+					echo '<li><a href="'.$boardurl.'/index.php?board=8.0">Anarchy</a></li>';
+
+				echo '<li><a href="'.$boardurl.'/index.php?board=3.0">Septagon</a></li>';
+				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']))
+					echo '<li><a href="'.$boardurl.'/index.php?board=2.0">HQ</a></li>';
+				echo '</ul></li>';
+			echo '
+			</ul>';
+		echo '
 		</nav>';
 		// Search
 		echo '
@@ -553,6 +572,7 @@ echo '
 
 
             $(\'#usrCommandMenu\').dropit({action: \'hover\'});
+            $(\'#smallNavMenu\').dropit({action: \'click\'});
 
             $("\'[placeholder]\'").focus(function() {
                 var input = $(this);
@@ -641,7 +661,24 @@ echo '
     </script>';
 
 	echo '
-<div class="spacemaker">&nbsp;</div>
+<div class="spacemaker">&nbsp;</div>';
+
+	// Screen and mobile
+	echo '
+	<script type="text/javascript">
+	$(document).ready( function() {
+		if ($(window).width() < 1024) {
+			$("#headerContainer").width($("#mainarea").width());
+			$("#footer").width($("#mainarea").width());
+			$("nav").addClass("small-screen");
+			$("#smallNavMenu").show();
+		}
+	});
+	</script>';
+
+
+
+		echo '
 		<div id="wrapper">';
 			echo '<a class="';
 			echo $banner;
