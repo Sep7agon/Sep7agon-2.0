@@ -697,6 +697,11 @@ echo '
 			$("#footer").width($("#mainarea").width());
 			$("nav").removeClass("small-screen");
 			$("#smallNavMenu").hide();
+			$("#NotLoggedIn").show();
+		}
+
+		if($windowSize <=600) {
+			$("#NotLoggedIn").hide();
 		}
 	});
 	</script>';
