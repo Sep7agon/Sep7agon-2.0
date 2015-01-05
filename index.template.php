@@ -2,7 +2,7 @@
 
 // Current version
 global $forumVersion;
-$forumVersion = "2.2.0";
+$forumVersion = "2.2.0a";
 
 // Initialize the template... mainly little settings.
 function template_init()
@@ -57,7 +57,7 @@ function template_html_above()
       __
    __/  \__		  ___          ____
   /  \__/  \	 / __| ___ _ _|__  |_ _ __ _ ___ _ _
-  \__/  \__/	 \__ \/ -_) \'_ \/ / _` / _` / _ \ \' \
+  \__/  \__/	 \__ \/ -_) \'_ \/ / _` / _` / _ \ \'\
   /  \__/  \	 |___/\___| .__/_/\__,_\__, \___/_||_|
   \__/  \__/	          |_|          |___/
      \__/
@@ -673,6 +673,7 @@ echo '
 <div class="spacemaker">&nbsp;</div>';
 
 	// Screen and mobile
+	/*
 	echo '
 	<script type="text/javascript">
 	$(document).ready( function() {
@@ -703,7 +704,8 @@ echo '
 			$("#NotLoggedIn").hide();
 		}
 	});
-	</script>';
+	</script>'; */
+	echo '<script type="text/javascript" src="'.$settings['theme_url'].'/data/js/mobile.js"></script>';
 
 
 
