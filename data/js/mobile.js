@@ -54,6 +54,7 @@ function resizeElements($bool) {
         $("#headerContainer").width($(window).width()-20);
         $("#footer").width($(window).width()-10);
         $("nav").addClass("small-screen");
+        $("#avatarToolbar").css("margin-left", "10px !important");
         resizeBranding(true);
     } else {
         $("#headerContainer").width($("#mainarea").width()+10);

@@ -403,8 +403,8 @@ echo '
 				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']))
 					echo '<li><a href="'.$boardurl.'/index.php?board=2.0">HQ</a></li>';
 				if (!$context['user']['is_logged']) {
-					echo '<li><a href="'.$boardurl.'/index.php?action?=login">Login</a></li>';
-					echo '<li><a href="'.$boardurl.'/index.php?action?=register">Sign up</a></li>';
+					echo '<li><a href="'.$boardurl.'/index.php?action=login">Login</a></li>';
+					echo '<li><a href="'.$boardurl.'/index.php?action=register">Sign up</a></li>';
 				}
 				echo '</ul></li>';
 			echo '
@@ -613,7 +613,7 @@ echo '
 
             // Hide search dropdown on click
             $(document).mousedown(function(e) {
-            	if(!$("#searchSelField").is(e.target)) {
+            	if(!$("#searchTool *").is(e.target)) {
             		searchTimeOut = window.setTimeout(hideSearchTooltip, 50);
             	}
             });
@@ -671,44 +671,8 @@ echo '
 
 	echo '
 <div class="spacemaker">&nbsp;</div>';
-
-	// Screen and mobile
-	/*
-	echo '
-	<script type="text/javascript">
-	$(document).ready( function() {
-		if ($(window).width() < 1024) {
-			$("#headerContainer").width($("#mainarea").width()-50);
-			$("#footer").width($("#mainarea").width());
-			$("nav").addClass("small-screen");
-			$("#smallNavMenu").show();
-		}
-	});
-
-	$(window).resize( function() {
-		$windowSize = $(window).width();
-		if ($windowSize <= 960) {
-			$("#headerContainer").width($windowSize-20);
-			$("#footer").width($windowSize-10);
-			$("nav").addClass("small-screen");
-			$("#smallNavMenu").show();
-		} else {
-			$("#headerContainer").width($("#mainarea").width()+10);
-			$("#footer").width($("#mainarea").width());
-			$("nav").removeClass("small-screen");
-			$("#smallNavMenu").hide();
-			$("#NotLoggedIn").show();
-		}
-
-		if($windowSize <=600) {
-			$("#NotLoggedIn").hide();
-		}
-	});
-	</script>'; */
+	// Script for mobile
 	echo '<script type="text/javascript" src="'.$settings['theme_url'].'/data/js/mobile.js"></script>';
-
-
-
 		echo '
 		<div id="wrapper">';
 			echo '<a class="';
