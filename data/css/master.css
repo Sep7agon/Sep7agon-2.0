@@ -474,11 +474,6 @@ a.editProfile:hover {
     float: none !important;
 }
 
-.small-userct ul.dropit-submenu {
-    margin-left: 38px;
-    top: 0px;
-}
-
 /* User Control Icons */
 
 #headerContainer #userControls ul li#pmIcon a.no-message,
@@ -491,14 +486,20 @@ a.editProfile:hover {
     display: block;
 }
 
-.small-avatarpos {
-    margin-left: -140px !important;
-}
 
 ul.dropit-submenu, #avatarToolbar {
-    margin-left: -180px;
+    margin-left: -180px !important;
 }
 
+.small-userct ul.dropit-submenu {
+    margin-left: 38px !important;
+    top: 0px;
+}
+
+
+.small-avatarpos {
+    margin-left: -140px;
+}
 
 #alerts {
     margin-left: -190px !important;
