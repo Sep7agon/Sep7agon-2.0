@@ -304,7 +304,7 @@ echo '
 
 
 			<div id="branding">
-				<a href="'.$boardurl.'">sep7agon</a>
+				<a href="'.$boardurl.'" onclick="$(\'.small-userct\').show();">sep7agon</a>
 			</div>';
 
 			// Navigation

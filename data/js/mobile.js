@@ -53,18 +53,21 @@ function resizeBranding($bool) {
 function displayUserControls() {
     if ($(window).width() <= 650) {
         $("#userControls").addClass("small-userct");
+        $("#branding a").attr("href", "#");
     } else {
         $("#userControls").removeClass("small-userct");
+        $("#userControls").show();
+        $("#branding a").attr("href", "index.php");
     }
 
     if ($("#userControls").hasClass("small-userct")) {
-        $("#branding").mouseenter(function () {
+        $("#branding").hover(function () {
             $(".small-userct").show();
         });
 
         $(document).mousedown(function(e) {
-            if(!$(".small-userct *").is(e.target)) {
-                $(".small-userct").hide();
+            if(!$("#userControls.small-userct *").is(e.target)) {
+                $("#userControls.small-userct").hide();
             }
         });
     }
