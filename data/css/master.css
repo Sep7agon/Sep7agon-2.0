@@ -154,7 +154,7 @@ a:link, a:visited, a:active {
 #headerContainer nav ul li a.current_b {
     color: whitesmoke;
     background: rgba(250, 250, 250, 0.2);
-    padding: 2px 5px;
+    padding: 5px;
     display: inline;
 }
 
