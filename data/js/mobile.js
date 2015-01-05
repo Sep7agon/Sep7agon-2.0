@@ -48,19 +48,44 @@ function resizeBranding($bool) {
     }
 }
 
+// Hide user controls and display under the
+// branding when hovered.
+function displayUserControls() {
+    if ($(window).width() <= 650) {
+        $("#userControls").addClass("small-userct");
+    } else {
+        $("#userControls").removeClass("small-userct");
+    }
+
+    if ($("#userControls").hasClass("small-userct")) {
+        $("#branding").mouseenter(function () {
+            $(".small-userct").show();
+        });
+
+        $(document).mousedown(function(e) {
+            if(!$(".small-userct *").is(e.target)) {
+                $(".small-userct").hide();
+            }
+        });
+    }
+}
+
 // Resize the elements of the website
 function resizeElements($bool) {
     if ($bool) {
         $("#headerContainer").width($(window).width()-20);
         $("#footer").width($(window).width()-10);
         $("nav").addClass("small-screen");
-        $("#avatarToolbar").css("margin-left", "10px !important");
+        $("#avatarToolbar").addClass("small-avatarpos");
         resizeBranding(true);
+        displayUserControls();
     } else {
         $("#headerContainer").width($("#mainarea").width()+10);
         $("#footer").width($("#mainarea").width());
         $("nav").removeClass("small-screen");
+        $("#avatarToolbar").removeClass("small-avatarpos")
         resizeBranding(false);
+        displayUserControls();
     }
 }
 
@@ -94,4 +119,8 @@ $(document).ready(function () {
 
     // Check and hide login message as needed.
     displayLoginMsg();
+
+    // Enables the small nav menu as a
+    // hover from the branding.
+
 });

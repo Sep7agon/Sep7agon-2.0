@@ -453,6 +453,24 @@ a.editProfile:hover {
     color: whitesmoke;
 }
 
+.small-userct {
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: -5px 5px 0 0 !important;
+    clear: both;
+    height: auto !important;
+    display: none;
+}
+
+.small-userct ul li {
+    display: block !important;
+    float: none !important;
+}
+
+.small-userct ul.dropit-submenu {
+    margin-left: 38px;
+    top: 0px;
+}
+
 /* User Control Icons */
 
 #headerContainer #userControls ul li#pmIcon a.no-message,
@@ -465,10 +483,14 @@ a.editProfile:hover {
     display: block;
 }
 
+.small-avatarpos {
+    margin-left: -140px !important;
+}
 
 ul.dropit-submenu, #avatarToolbar {
-    margin-left: -180px !important;
+    margin-left: -180px;
 }
+
 
 #alerts {
     margin-left: -190px !important;
