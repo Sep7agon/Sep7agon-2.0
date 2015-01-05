@@ -22,10 +22,11 @@
 // Hides or shows login message depending
 // on the given resolution.
 function displayLoginMsg() {
-    if ($(window).width() <= 600) {
-        return $("#NotLoggedIn").hide();
+    if ($(window).width() <= 650) {
+        $("#NotLoggedIn").hide();
+    } else {
+        $("#NotLoggedIn").show();
     }
-    return $("#NotLoggedIn").show();
 }
 
 // Display the small navigation menu?
@@ -48,8 +49,8 @@ function resizeBranding($bool) {
 }
 
 // Resize the elements of the website
-function resizeElements($boolB) {
-    if ($boolB) {
+function resizeElements($bool) {
+    if ($bool) {
         $("#headerContainer").width($(window).width()-20);
         $("#footer").width($(window).width()-10);
         $("nav").addClass("small-screen");
@@ -68,15 +69,13 @@ function resizeElements($boolB) {
 $(document).ready(function () {
     // Or actual window size, which could imply
     // the resolution itself
-    $(window).ready(function () {
-        if ($(window).width() <= 960) {
-            resizeElements(true);
-            displaySmallNav(true);
-        } else {
-            resizeElements(false);
-            displaySmallNav(false);
-        }
-    });
+    if ($(window).width() <= 960) {
+        resizeElements(true);
+        displaySmallNav(true);
+    } else {
+        resizeElements(false);
+        displaySmallNav(false);
+    }
 
     // On window resize adjust things
     $(window).resize(function () {
@@ -91,4 +90,7 @@ $(document).ready(function () {
         // Check and hide login message as needed.
         displayLoginMsg();
     });
+
+    // Check and hide login message as needed.
+    displayLoginMsg();
 });
