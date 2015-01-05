@@ -396,7 +396,7 @@ echo '
 				echo '<li><a href="'.$boardurl.'/index.php?board=1.0">The Flood</a></li>';
 				echo '<li><a href="'.$boardurl.'/index.php?board=6.0">Serious</a></li>';
 				echo '<li><a href="'.$boardurl.'/index.php?board=4.0">Gaming</a></li>';
-				if ($context['user']['is_logged'] && $anarchy || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))
+				if ($context['user']['is_logged'] && $anarchy && (in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']) || in_array(69,$user_info['groups'])))
 					echo '<li><a href="'.$boardurl.'/index.php?board=8.0">Anarchy</a></li>';
 
 				echo '<li><a href="'.$boardurl.'/index.php?board=3.0">Septagon</a></li>';
