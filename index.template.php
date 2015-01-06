@@ -2,7 +2,7 @@
 
 // Current version
 global $forumVersion;
-$forumVersion = "2.2.0";
+$forumVersion = "2.2.0a";
 
 // Initialize the template... mainly little settings.
 function template_init()
@@ -57,7 +57,7 @@ function template_html_above()
       __
    __/  \__		  ___          ____
   /  \__/  \	 / __| ___ _ _|__  |_ _ __ _ ___ _ _
-  \__/  \__/	 \__ \/ -_) \'_ \/ / _` / _` / _ \ \' \
+  \__/  \__/	 \__ \/ -_) \'_ \/ / _` / _` / _ \ \'\
   /  \__/  \	 |___/\___| .__/_/\__,_\__, \___/_||_|
   \__/  \__/	          |_|          |___/
      \__/
@@ -304,7 +304,7 @@ echo '
 
 
 			<div id="branding">
-				<a href="'.$boardurl.'">sep7agon</a>
+				<a href="'.$boardurl.'" onclick="$(\'.small-userct\').show();">sep7agon</a>
 			</div>';
 
 			// Navigation
@@ -396,15 +396,15 @@ echo '
 				echo '<li><a href="'.$boardurl.'/index.php?board=1.0">The Flood</a></li>';
 				echo '<li><a href="'.$boardurl.'/index.php?board=6.0">Serious</a></li>';
 				echo '<li><a href="'.$boardurl.'/index.php?board=4.0">Gaming</a></li>';
-				if ($context['user']['is_logged'] && $anarchy || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))
+				if ($context['user']['is_logged'] && $anarchy && (in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']) || in_array(69,$user_info['groups'])))
 					echo '<li><a href="'.$boardurl.'/index.php?board=8.0">Anarchy</a></li>';
 
 				echo '<li><a href="'.$boardurl.'/index.php?board=3.0">Septagon</a></li>';
 				if ($context['allow_admin'] || in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) || in_array(63,$user_info['groups']))
 					echo '<li><a href="'.$boardurl.'/index.php?board=2.0">HQ</a></li>';
 				if (!$context['user']['is_logged']) {
-					echo '<li><a href="'.$boardurl.'/index.php?action?=login">Login</a></li>';
-					echo '<li><a href="'.$boardurl.'/index.php?action?=register">Sign up</a></li>';
+					echo '<li><a href="'.$boardurl.'/index.php?action=login">Login</a></li>';
+					echo '<li><a href="'.$boardurl.'/index.php?action=register">Sign up</a></li>';
 				}
 				echo '</ul></li>';
 			echo '
@@ -613,7 +613,7 @@ echo '
 
             // Hide search dropdown on click
             $(document).mousedown(function(e) {
-            	if(!$("#searchSelField").is(e.target)) {
+            	if(!$("#searchTool *").is(e.target)) {
             		searchTimeOut = window.setTimeout(hideSearchTooltip, 50);
             	}
             });
@@ -671,42 +671,8 @@ echo '
 
 	echo '
 <div class="spacemaker">&nbsp;</div>';
-
-	// Screen and mobile
-	echo '
-	<script type="text/javascript">
-	$(document).ready( function() {
-		if ($(window).width() < 1024) {
-			$("#headerContainer").width($("#mainarea").width()-50);
-			$("#footer").width($("#mainarea").width());
-			$("nav").addClass("small-screen");
-			$("#smallNavMenu").show();
-		}
-	});
-
-	$(window).resize( function() {
-		$windowSize = $(window).width();
-		if ($windowSize <= 960) {
-			$("#headerContainer").width($windowSize-20);
-			$("#footer").width($windowSize-10);
-			$("nav").addClass("small-screen");
-			$("#smallNavMenu").show();
-		} else {
-			$("#headerContainer").width($("#mainarea").width()+10);
-			$("#footer").width($("#mainarea").width());
-			$("nav").removeClass("small-screen");
-			$("#smallNavMenu").hide();
-			$("#NotLoggedIn").show();
-		}
-
-		if($windowSize <=600) {
-			$("#NotLoggedIn").hide();
-		}
-	});
-	</script>';
-
-
-
+	// Script for mobile
+	echo '<script type="text/javascript" src="'.$settings['theme_url'].'/data/js/mobile.js"></script>';
 		echo '
 		<div id="wrapper">';
 			echo '<a class="';
