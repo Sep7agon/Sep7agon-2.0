@@ -57,7 +57,7 @@ header {
     position: fixed;
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
-    z-index: 100;
+    z-index: 1000;
 }
 
 a:link, a:visited, a:active {
