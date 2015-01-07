@@ -356,7 +356,7 @@ echo '
 
 			if ($context['allow_admin'] && $anarchy && (in_array(1,$user_info['groups']) ||
 					in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) ||
-						in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))) {
+						in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']) || in_array(74,$user_info['groups']))) {
 				echo '<li><a';
 				if ($context['current_board'] == 8) {
 					echo ' class="current_b"';
@@ -817,7 +817,7 @@ function displaySpecificMenu($menu) {
 
 function template_body_below()
 {
-	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl;
+	global $context, $settings, $options, $scripturl, $txt, $modSettings, $boardurl, $forumVersion;
 
 		echo '
 			</div>';
@@ -828,9 +828,9 @@ function template_body_below()
  				copyright messages if we hide this. */
 				// Our actual footer
 				echo '
-				<p class="copyNote"><a href="http://http://sep7agon.net/index.php?topic=6.0" target="_self">Check the Rules</a> <a href="http://sep7agon.net/index.php?topic=7173.0" target="_self">Patch notes</a>
+				<p class="copyNote"><a href="http://http://sep7agon.net/index.php?topic=6.0" target="_self">Check the Rules</a> <a href="http://sep7agon.net/index.php?topic=21782.0" target="_self">Patch notes</a>
 				<a href="http://sep7agon.net/index.php?topic=8396.0" target="_self">About moderation</a><br/>
-				&copy; Sep7agon.net, all rights reserved.</p>
+				&copy; Sep7agon.net, all rights reserved. [Version: '.$forumVersion.'] </p>
 				';
 
 				// Show the load time?
