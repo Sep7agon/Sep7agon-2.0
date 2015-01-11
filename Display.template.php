@@ -338,10 +338,18 @@ function template_main()
 		$karmaquote = ($karmagood + 1) / (($karmabad + 1) * 0.80);
 		$karmarank = $karmagood - $karmabad;
 		$mykarmarank = $user_info['karma']['good'] - $user_info['karma']['bad'];
+        
+        //Staff Hat code follows; must be before the trustranks.php include...
+        foreach ($message['member']['custom_fields'] as $custom) {
+				if ($custom['title'] == "Staff Hat") {
+                    $staffhat = $custom['value'];
+				}
+			}
 
 		//include("specialplates.php");
 		include("nameplates.php");
 		include("trustranks.php");
+        $staffhat = '';
         
         // if they are warned, then hide their customization!
         if ($message['member']['warning_status'] && $adminflag == false) {
@@ -471,6 +479,7 @@ function template_main()
 			echo '<div class="mobilelinks">';
 				echo '<div OnClick="OpenMlinks', $message['counter'], '()" id="mlinkshead', $message['counter'],'" style="float: left; background: url(http://sep7agon.net/images/mlinkshead.png) #111111 top center; background-repeat: no-repeat; width: 100%; height: 20px; overflow: hidden; cursor: pointer;">';
 					echo '&nbsp;';
+        
 				echo '</div><!--end mlinkshead-->';
 				echo '<div class="mlinksbody" id="mlinksbody', $message['counter'],'" style="display: none;"><center><br /><br />';
 					
@@ -514,7 +523,6 @@ function template_main()
 					
 				echo '<br /></center></div><!--end mlinksbody-->';
 			echo '</div><!--end mobilelinks-->';
-		
 		
 		/*if ($context['user']['id'] == 1) {
 			print_r($context);

@@ -356,7 +356,7 @@ echo '
 
 			if ($context['allow_admin'] && $anarchy && (in_array(1,$user_info['groups']) ||
 					in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) ||
-						in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))) {
+						in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']) || in_array(74,$user_info['groups']))) {
 				echo '<li><a';
 				if ($context['current_board'] == 8) {
 					echo ' class="current_b"';
