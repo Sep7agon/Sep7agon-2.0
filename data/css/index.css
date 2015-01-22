@@ -3642,7 +3642,7 @@ figure embed, figure iframe {
 }
 
 .nameplates {
-	text-shadow: 0 0 4px #111111;
+	text-shadow: 0 0 4px #111111, 0 0 4px #111111;
 }
 
 .icon_mod {
