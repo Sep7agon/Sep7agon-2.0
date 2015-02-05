@@ -306,6 +306,10 @@ a:link, a:visited, a:active {
     display: table;
 }
 
+.trans {
+    opacity: 0.5;
+}
+
 /* Avatar Controls */
 
 #headerContainer #userInfoPane #avatar a#avatarControls {
