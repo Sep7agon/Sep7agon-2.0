@@ -6,6 +6,6 @@
 global $settings;
 
 $txt['theme_thumbnail_href'] = $settings['images_url'] . '/thumbnail.gif';
-$txt['theme_description'] = 'Mystic Jade is a modern dark - grey theme for SMF.<br /><br />Theme by <a href="http://www.dzinerstudio.com">DzinerStudio</a>.';
+$txt['theme_description'] = 'Sep7agon V2 is the next step in Sep7agon\'s future.';
 
 ?>
