@@ -295,6 +295,11 @@ else
 
 $anarchy = $context['theme_settings']['anarchy'];
 $forumDev =  $context['theme_settings']['devmode'];
+    
+if ($_GET['action'] || $_GET['board'] || $_GET['topic'] || $_GET['page'])
+    $frontpage = false;
+else
+    $frontpage = true;
 
 // Header, and logo
 echo '
@@ -315,6 +320,15 @@ echo '
 				$banner='b_index';
 				$b_href= $boardurl;
 			}
+    
+            // Index
+			echo '<li><a';
+			if ($_GET['action'] == 'forum') {
+				echo ' class="current_b"';
+				$b_href= '?action=forum';
+				$banner='b_index';
+			}
+			echo ' href="',$boardurl,'/index.php?action=forum">List</a></li>';
 
 			// News
 			echo '<li><a';
@@ -332,7 +346,7 @@ echo '
 				$b_href= '?board=1.0';
 				$banner='b_flood';
 			}
-			echo ' href="',$boardurl,'/index.php?board=1.0">The Flood</a></li>';
+			echo ' href="',$boardurl,'/index.php?board=1.0">Flood</a></li>';
 
 			// Serious
 			echo '<li><a';
@@ -391,7 +405,7 @@ echo '
 			<ul id="smallNavMenu">';
 				echo '<li class="menuBtn"><a class="menuBtnLink" href="#">Menu</a>';
 				echo '<ul id="mobileMenu">';
-
+                echo '<li><a href="'.$boardurl.'/index.php?action=forum">List</a></li>';
 				echo '<li><a href="'.$boardurl.'/index.php?board=5.0">News</a></li>';
 				echo '<li><a href="'.$boardurl.'/index.php?board=1.0">The Flood</a></li>';
 				echo '<li><a href="'.$boardurl.'/index.php?board=6.0">Serious</a></li>';
@@ -570,13 +584,13 @@ echo '
             } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length > 6) {
             	$("#navMenu li").css("padding", "0px 14px"); // Admin with anarchy board
             } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length == 6) {
-            	$("#navMenu li").css("padding", "0px 22px"); // Admin without Anarchy board
+            	$("#navMenu li").css("padding", "0px 20px"); // Admin without Anarchy board
             } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length == 6) {
             	$("#navMenu li").css("padding", "0px 18px"); // Moderator with HQ
             } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length > 6) {
 				$("#navMenu li").css("padding", "0px 18px"); // Moderator with HQ and Anarchy
             } else if ($("#userControls ul li.menuOption").length == 0) {
-            	$("#navMenu li").css("padding", "0px 25px"); // Guest
+            	$("#navMenu li").css("padding", "0px 20px"); // Guest
             }
 
 
@@ -675,11 +689,16 @@ echo '
 	echo '<script type="text/javascript" src="'.$settings['theme_url'].'/data/js/mobile.js"></script>';
 		echo '
 		<div id="wrapper">';
+            if (!$frontpage){
 			echo '<a class="';
 			echo $banner;
 			echo ' banner" href="';
 			echo $b_href;
 			echo '" target="_self">&nbsp;</a>';
+            }
+            elseif ($frontpage) {
+                include("fader-test.php");
+            }
 			echo '<div style="clear: both;"></div>
 			<div id="topbar">';
 	
@@ -726,7 +745,8 @@ echo '
 			if (!empty($options['show_board_desc']) && $context['description'] != '')
 				echo '<p class="description_board">', $context['description'], '</p>';
 			// Show the navigation tree.
-			theme_linktree();
+            if (!$frontpage)
+                theme_linktree();
 
 }
 

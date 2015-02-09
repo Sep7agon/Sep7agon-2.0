@@ -211,7 +211,7 @@ function template_summary()
 				$shown = true;
 			}
 			
-			if ($field['name'] != 'Staff Hat' && $field['name'] != 'Custom Nameplate' && $field['name'] != 'Custom Title Bar Color' && $field['name'] != 'Custom Title Bar Border' && $field['name'] != 'Custom Post Color')
+			if ($field['name'] != 'Staff Hat' && $field['name'] != 'Custom Nameplate' && $field['name'] != 'Custom Title Bar Color' && $field['name'] != 'Custom Title Bar Border' && $field['name'] != 'Custom Post Color' && $field['name'] != 'Anarchy Avatar' && $field['name'] != 'Anarchy Avatar Killswitch')
 			echo '
 					<dt>', $field['name'], ':</dt>
 					<dd>', $field['output_html'], '</dd>';

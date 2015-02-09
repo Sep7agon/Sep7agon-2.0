@@ -86,7 +86,7 @@ a:link, a:visited, a:active {
     width: 950px;
     height: 50px;
     margin: 0 auto;
-    padding-left: 15px;
+    /* padding-left: 15px; */
     border-left: 1px solid rgba(60, 60, 60, 0.31);
     border-right: 1px solid rgba(60, 60, 60, 0.31);
     z-index: 100;
@@ -102,6 +102,7 @@ a:link, a:visited, a:active {
     width: 140px;
     height: 50px;
     padding-right: 15px;
+	margin-left: 15px;
     font: normal 18pt 'Play', sans-serif;
     border-right: 1px solid rgba(60, 60, 60, 0.31);
     text-indent: -99999px;
@@ -161,8 +162,10 @@ a:link, a:visited, a:active {
 
 #headerContainer nav ul li a.current_b {
     color: whitesmoke;
-    background: rgba(250, 250, 250, 0.2);
-    padding: 5px;
+    /* background: rgba(250, 250, 250, 0.2);
+    padding: 5px; */
+	border-bottom: 1px dotted rgba(250, 250, 250, 0.5f);
+	padding-bottom: 2px;
     display: inline;
 }
 
@@ -548,7 +551,7 @@ ul.dropit-submenu li a:hover {
     display: none;
     width: 220px;
     padding: 0;
-    margin: 15px -10px;
+    margin: 15px -20px;
 }
 
 #headerContainer #userControls #NotLoggedIn,
@@ -804,6 +807,23 @@ img.alerts_va, #alerts_counter {
     border: none;
 }
 
+@media only screen and (min-width : 950px) {
+    .spacemaker {
+        height: 80px;
+    }
+}
+
+@media only screen and (max-width : 950px) {
+    
+    .spacemaker {
+	   display: none;
+    }
+    
+    div#wrapper{
+	   padding-top: 50px !important;
+    }
+}
+
 div#wrapper{
     background: rgba(0, 0, 0, 0.6);
     border: none;
@@ -990,6 +1010,197 @@ input, button, select, textarea, .button_submit, .button_reset {
     background: #373737;
     color: #CCCCCC;
 }
+
+/* SimplePortal override */
+
+table.sp_articles {
+    border-spacing: 0px 5px !important;
+}
+
+table.sp_articles tbody tr {
+    background: rgba(0,0,0,0.3);
+}
+
+table.sp_articles td.sp_articles {
+    padding: 7px 5px 0 3px;
+    width: 10%;
+}
+
+table.sp_articles span.sp_articles_title {
+    /*position: relative;
+    top: 20px;*/
+    border-bottom: none;
+    font-size: 80%;
+}
+
+table.sp_articles span.sp_articles_title::before {
+    content: "by ";
+}
+
+table.sp_articles span.sp_articles_title a {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+/* Frontpage Styles */
+
+.fader-container {
+    width: 100%;
+    height: 40%;
+    margin: 0 0 10px 0;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    color: #FFFFFF;
+}
+
+#fader-link {
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    background: #000000;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+a.fader h1 {
+    position: relative;
+    padding: 23% 0 30px 25px;
+    margin: 0;
+    font-weight: normal;
+    font-size: 48px;
+    text-shadow: 0 0 5px #000000, 0 0 15px #000000;
+}
+
+a.fader h2 {
+    position: relative;
+    padding: 1px 0 20px 40px;
+    margin: 0;
+    font-weight: normal;
+    font-size: 20px;
+    text-shadow: 0 0 10px #000000;
+}
+
+.switches {
+    width: auto;
+    overflow: hidden;
+    margin: 0;
+}
+
+.switch-buffer {
+    background: rgba(0, 0, 0,0.1);
+    width: 0.2%;
+    float: left;
+    overflow: hidden;
+    display: block;
+    max-width: 1px;
+}
+
+#switch1, #switch2, #switch3, #switch4 {
+    
+}
+
+.switch {
+    background: rgba(52, 185, 235,0.1);
+    width: 24.85%;
+    display: block;
+    float: left;
+    cursor: pointer;
+}
+
+.switch:hover {
+    background: rgba(52, 185, 235,0.2);
+}
+
+.frontpage-blocks {
+    float: left;
+    display: block;
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+    margin-left: 1%;
+}
+
+.frontpage-ad {
+    float: right;
+    display: block;
+    position: relative;
+    width: 24.5%;
+    min-height: 300px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.1);
+}
+
+.event-container {
+    width: 100%;
+    height: 50%;
+    margin: 0 0 25px 0;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Arial', Arial, sans-serif;
+    color: #FFFFFF;
+    padding: 1.5%;
+    background: rgba(0,0,0,0.5);
+}
+
+.event-link {
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.event-link:hover {
+    text-decoration: none;
+}
+
+a.event-link h1 {
+    position: relative;
+    padding: 22% 0 10px 15px;
+    margin: 0;
+    font-weight: normal;
+    font-size: 38px;
+    text-shadow: 0 0 5px #000000, 0 0 15px #000000;
+    text-decoration: none;
+}
+
+@media only screen and (min-width : 600px) {
+    .frontpage-blocks {
+        width: 72%;
+    }
+    
+    .frontpage-ad {
+        /* nothing to add */
+    }
+    
+    .switch, .switch-buffer {
+        height: 25px;
+    }
+    
+}
+
+@media only screen and (max-width : 600px) {
+    .frontpage-blocks {
+        width: 100%;
+    }
+    
+    .frontpage-ad {
+        display: none;
+    }
+    
+    .switch, switch-buffer {
+        height: 30px;
+    }
+}
+
 
 /* Form elements override */
 
