@@ -301,7 +301,7 @@ a:link, a:visited, a:active {
 
 #headerContainer #userInfoPane #avatar {
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top center;
     background-size: 40px;
     background-origin: border-box;
     width: 40px;
@@ -346,7 +346,7 @@ a:link, a:visited, a:active {
     outline: 5px solid rgba(50, 50, 50, 0.75);
     float: left;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top center;
     background-size: 100px;
 }
 
