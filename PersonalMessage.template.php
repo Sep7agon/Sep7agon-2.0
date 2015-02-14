@@ -589,12 +589,8 @@ if ($message['member']['is_guest'] && ($message['member']['name'] != 'Disembodie
 				
 			</div>
 			<div class="post">
-				<div class="inner" id="msg_', $message['id'], '"', '>', $message['body'], '</div>
-				<div class="smalltext reportlinks">
-					', (!empty($modSettings['enableReportPM']) && $context['folder'] != 'sent' ? '<div class="righttext"><a href="' . $scripturl . '?action=pm;sa=report;l=' . $context['current_label_id'] . ';pmsg=' . $message['id'] . '">' . $txt['pm_report_to_admin'] . '</a></div>' : '');
-
-			echo '
-				</div>';
+				<div class="inner" id="msg_', $message['id'], '"', '>', $message['body'], '</div><br /><br />';
+				
 				
 			// Show reply buttons if you have the permission to send PMs.
 			if ($context['can_send_pm'] && !$message['member']['is_guest'])
@@ -604,6 +600,9 @@ if ($message['member']['is_guest'] && ($message['member']['name'] != 'Disembodie
 				{
 				
 					echo '<section class="bungie_links_pm">';
+                    
+                    if (!empty($modSettings['enableReportPM']) && $context['folder'] != 'sent')
+                        echo '<a class="bungie_buttons" href="' . $scripturl . '?action=pm;sa=report;l=' . $context['current_label_id'] . ';pmsg=' . $message['id'] . '">Report</a>';
 				
 					// Is there than more than one recipient you can reply to?
 					if ($message['number_recipients'] > 1 && $context['display_mode'] != 2)
