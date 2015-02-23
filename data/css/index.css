@@ -1813,7 +1813,7 @@ p#whoisviewing
 	.poster img.avatar {
 		width: 100%;
 		height: auto;
-        max-height: 200px;
+        max-height: 250px;
 	}
 	.postarea, .moderatorbar
 	{
@@ -1845,7 +1845,7 @@ p#whoisviewing
 	.poster img.avatar {
 		width: 100%;
 		height: auto;
-        max-height: 200px;
+        max-height: 250px;
 	}
 	.postarea, .moderatorbar
 	{
