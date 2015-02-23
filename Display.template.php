@@ -381,7 +381,7 @@ function template_main()
 				}
 				
 					echo '<span class="topslice"><span></span></span>
-					<div class="post_wrapper">';
+					<div class="post_wrapper userID_', $message['member']['id'],'">';
 					
 
 		// Show information about the poster of this message.
@@ -417,7 +417,7 @@ function template_main()
 			// Colored Avatar Box
 			echo '<div style="background: ',$bpbar,'; border: 1px solid ',$bpborder,'; width: 95%; margin: -10px 0 0 0;">';	
 			//Content Avatar Box
-			echo '<div style="width: 95%; margin: 2.5% auto 2.5% auto; max-height: 200px; overflow: hidden;">';
+			echo '<div style="width: 95%; margin: 2.5% auto 2.5% auto !important; max-height: 200px !important; overflow: hidden;">';
 			// Show avatars, images, etc.?
 			
 			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
@@ -591,9 +591,11 @@ function template_main()
 							//First, get a variable for the karma...
 							if ($customtitle != true || $message['member']['title'] == '') {
 								if ($customprefix == 'default')
-									echo '<span class="trust_title">' . $trusttitle . '</span>';
+									echo '<span class="trust_title">' . $trusttitle . '</span> ';
 								else
-									echo $customprefix;
+									echo '<span class="trust_title">' . $customprefix . '</span> ';
+                                
+                                echo '<span class="rank_title">';
 									
 								if ($postgroupflag == 'true')
 								{
@@ -613,8 +615,10 @@ function template_main()
 								echo 'Mystery Member';
 							}
 							if ($customtitle == true && $message['member']['title'] != '') {
-								echo substr($message['member']['title'],0,35);
+								echo '<span class="rank_title">' . substr($message['member']['title'],0,35) . '</span>';
 							}
+        
+                            echo '</span>';
 							
 							echo '</span>';
 							echo '<div style="z-index:50; float:right; padding-right:10px;">';

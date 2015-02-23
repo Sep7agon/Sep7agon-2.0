@@ -548,7 +548,7 @@ echo '
 				pmIcon();
 
 				// Display admin icon
-				if ($context['user']['is_admin']) {
+				if ($context['user']['is_admin'] || in_array(2,$user_info['groups'])) {
 					adminIcon();
 				}
 
