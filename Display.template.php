@@ -417,7 +417,7 @@ function template_main()
 			// Colored Avatar Box
 			echo '<div style="background: ',$bpbar,'; border: 1px solid ',$bpborder,'; width: 95%; margin: -10px 0 0 0;">';	
 			//Content Avatar Box
-			echo '<div style="width: 95%; margin: 2.5% auto 2.5% auto !important; max-height: 200px !important; overflow: hidden;">';
+			echo '<div style="width: 95%; overflow: hidden;">';
 			// Show avatars, images, etc.?
 			
 			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
