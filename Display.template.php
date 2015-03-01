@@ -458,8 +458,8 @@ function template_main()
 			// Any custom fields for standard placement?
 
 			// Are we showing the warning status?
-			if ($message['member']['can_see_warning'])
-				echo $context['can_issue_warning'] ? '<a href="' . $scripturl . '?action=profile;area=issuewarning;u=' . $message['member']['id'] . '">' : '', '', $context['can_issue_warning'] ? '</a>' : '', '<span style="margin: 3px 0 0 0; padding: 3px 0 0 0;"  class="warn_', $message['member']['warning_status'], '">', $txt['warn_' . $message['member']['warning_status']], '</span>';
+			/*if ($message['member']['can_see_warning'])
+				echo $context['can_issue_warning'] ? '<a href="' . $scripturl . '?action=profile;area=issuewarning;u=' . $message['member']['id'] . '">' : '', '', $context['can_issue_warning'] ? '</a>' : '', '<span style="margin: 3px 0 0 0; padding: 3px 0 0 0;"  class="warn_', $message['member']['warning_status'], '">', $txt['warn_' . $message['member']['warning_status']], '</span>';*/
 		}
 		if ($message['member']['is_guest']) {
 			// Colored Avatar Box
@@ -560,6 +560,14 @@ function template_main()
 							echo $bpborder;
 							
 							echo '; background-repeat:no-repeat; background-position: top right; text-align:left; margin: -10px 5px 0 auto; padding: 5px 0 0 5px; overflow:hidden;">';
+        
+                            // Are we showing the warning status?
+                            if ($message['member']['warning_status'] == 'mute') {
+                                echo '<div class="icon_' , $message['member']['warning_status'] , '" title="' , $txt['warn_' . $message['member']['warning_status']] , '">&nbsp;</div>';
+                            }
+                            elseif ($message['member']['can_see_warning']) {
+                                echo '<div class="icon_' , $message['member']['warning_status'] , '" title="' , $txt['warn_' . $message['member']['warning_status']] , '">&nbsp;</div>';
+                            }
 							
 							if ($postgroupflag == 'true')
 								echo '<b><a style="color: #F0F8FF;" href="', $scripturl, '?action=profile;u=', $message['member']['id'], '" title="',$message['member']['blurb'],'">';

@@ -3677,6 +3677,30 @@ figure embed, figure iframe {
 	margin: 0 3px 0 0;
 }
 
+.icon_ {
+    display: none;
+}
+
+.icon_watch {
+    background: url("http://sep7agon.net/images/circles.png") 0 0 no-repeat;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+	margin: 0 3px 0 0;
+}
+
+.icon_mute {
+    background: url("http://sep7agon.net/images/circles.png") -15px 0 no-repeat;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+	margin: 0 3px 0 0;
+}
+
 blockquote blockquote blockquote blockquote {
 	display: none;
 }
