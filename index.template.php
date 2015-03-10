@@ -143,7 +143,7 @@ echo '<head>';
 		}
 
 		.b_anarchy {
-			background: url("',$settings['theme_url'],'/data/img/boards/b_rapture.png") no-repeat left top;
+			background: url("',$settings['theme_url'],'/data/img/boards/b_anarchy.png") no-repeat left top;
 		}
 
 		.b_hq {
@@ -293,8 +293,13 @@ if ($context['current_topic'] >= 1)
 else
 	$isthread = 'false';
 
-$anarchy = $context['theme_settings']['anarchy'];
-$forumDev =  $context['theme_settings']['devmode'];
+//$anarchy = $context['theme_settings']['anarchy'];
+//$forumDev =  $context['theme_settings']['devmode'];
+$iwhbyd_onyx = file_get_contents("http://iwhbyd.net/anarchy/onyx.txt");
+if ($iwhbyd_onyx == 'black')
+    $anarchy = true;
+else
+    $anarchy = false;
     
 if ($_GET['action'] || $_GET['board'] || $_GET['topic'] || $_GET['page'])
     $frontpage = false;
@@ -368,9 +373,9 @@ echo '
 
 			// Anarchy
 
-			if ($context['allow_admin'] && $anarchy && (in_array(1,$user_info['groups']) ||
+			if ($anarchy && $user_info['posts'] >= 100 /*&& (in_array(1,$user_info['groups']) ||
 					in_array(2,$user_info['groups']) || in_array(36,$user_info['groups']) ||
-						in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']) || in_array(74,$user_info['groups']))) {
+						in_array(63,$user_info['groups']) || in_array(69,$user_info['groups']))*/) {
 				echo '<li><a';
 				if ($context['current_board'] == 8) {
 					echo ' class="current_b"';
@@ -578,7 +583,7 @@ echo '
         	$(\'#NotLoggedIn\').show();
 
             if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length > 5) {
-            	$("#navMenu li").css("padding", "0px 26px"); // Normal member with anarchy
+            	$("#navMenu li").css("padding", "0px 23px"); // Normal member with anarchy
             } else if ($("#userControls ul li.menuOption").length == 1 && $("#navMenu li").length == 5) {
             	$("#navMenu li").css("padding", "0px 36px"); // Normal member, no extra forums
             } else if ($("#userControls ul li.menuOption").length > 2 && $("#navMenu li").length > 6) {
@@ -588,7 +593,7 @@ echo '
             } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length == 6) {
             	$("#navMenu li").css("padding", "0px 18px"); // Moderator with HQ
             } else if ($("#userControls ul li.menuOption").length == 2 && $("#navMenu li").length > 6) {
-				$("#navMenu li").css("padding", "0px 18px"); // Moderator with HQ and Anarchy
+				$("#navMenu li").css("padding", "0px 17px"); // Moderator with HQ and Anarchy
             } else if ($("#userControls ul li.menuOption").length == 0) {
             	$("#navMenu li").css("padding", "0px 20px"); // Guest
             }
@@ -848,7 +853,8 @@ function template_body_below()
  				copyright messages if we hide this. */
 				// Our actual footer
 				echo '
-				<p class="copyNote"><a href="http://sep7agon.net/index.php?topic=6.0" target="_self">Check the Rules</a> <a href="http://sep7agon.net/index.php?topic=21782.0" target="_self">Patch notes</a>
+				<p class="copyNote"><a style="margin-right: 0px;" href="http://sep7agon.net/index.php?action=credits" target="_blank">SMF 2.0.9</a> | <a style="margin-right: 0px;" href="http://www.simplemachines.org/about/smf/license.php" target="_blank">SMF &copy; 2014</a>, <a style="margin-right: 0px;" href="http://simplemachines.org" target="_blank">Simple Machines</a><br/>
+                <a href="http://sep7agon.net/index.php?topic=6.0" target="_self">Check the Rules</a> <a href="http://sep7agon.net/index.php?topic=21782.0" target="_self">Patch notes</a>
 				<a href="http://sep7agon.net/index.php?topic=8396.0" target="_self">About moderation</a><br/>
 				&copy; Sep7agon.net, all rights reserved. [Version: '.$forumVersion.'] </p>
 				';

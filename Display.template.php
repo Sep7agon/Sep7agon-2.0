@@ -351,6 +351,11 @@ function template_main()
 		include("trustranks.php");
         $staffhat = '';
         
+        if ($context['current_board'] == 8) { //Anarchy Custom stuff
+            $customtitle = true;
+            $custompost = true;
+        }
+        
         // if they are warned, then hide their customization!
         if ($message['member']['warning_status'] && $adminflag == false) {
             /*$trusttitle = '';
