@@ -188,6 +188,22 @@ echo '<head>';
 	if ($context['right_to_left'])
 		echo '
 	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/data/css/rtl.css?',date('ddmmyyyytt'),'" />';
+    
+    // Illuminati confirmed!
+    $ill_rand = rand(0,777);
+    if ($ill_rand == 7) { //Doing illuminati stuff, yo.
+        echo '
+        <style tyle="text/css">
+            #headerContainer #branding {
+                background-image: url("../Themes/Sep7agon-2.0/data/img/logo-big-admin.png") !important;
+            }
+            
+            #headerContainer #branding.small-brand {
+                background-image: url("../Themes/Sep7agon-2.0/data/img/logo-small-admin.png") !important;
+            }
+        </style>
+        ';
+    }
 
 	// Here comes the JavaScript bits!
 	echo '
@@ -211,7 +227,8 @@ echo '<head>';
 	// ]]></script>';
 
 	include('catchphrase.php');
-
+    if ($ill_rand == 7)
+        $outputphrase = 'Illuminati Confirmed!';
 	if ($context['page_title_html_safe'] == 'Sep7agon')
 		$pagetitle = 'Sep7agon | ' . $outputphrase;
 	else
