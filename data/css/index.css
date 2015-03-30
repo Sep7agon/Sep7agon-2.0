@@ -3677,6 +3677,66 @@ figure embed, figure iframe {
 	margin: 0 3px 0 0;
 }
 
+.icon_sep7 {
+	background: url("http://sep7agon.net/images/staff_icons.png") -45px 0 no-repeat;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+	margin: 0 3px 0 0;
+}
+
+.icon_pro {
+	background: url("http://sep7agon.net/images/staff_icons.png") -60px 0 no-repeat;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+	margin: 0 3px 0 0;
+}
+
+.icon_ambassador {
+	background: url("http://sep7agon.net/images/staff_icons.png") -75px 0 no-repeat;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+	margin: 0 3px 0 0;
+}
+
+.icon_rank1 {
+	background: url("http://sep7agon.net/images/staff_icons.png") -90px 0 no-repeat;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+	margin: 0 3px 0 0;
+}
+
+.icon_rank2 {
+	background: url("http://sep7agon.net/images/staff_icons.png") -105px 0 no-repeat;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+	margin: 0 3px 0 0;
+}
+
+.icon_rank3 {
+	background: url("http://sep7agon.net/images/staff_icons.png") -120px 0 no-repeat;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+	margin: 0 3px 0 0;
+}
+
 .icon_ {
     display: none;
 }

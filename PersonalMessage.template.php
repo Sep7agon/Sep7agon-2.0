@@ -283,6 +283,13 @@ foreach ($message['member']['custom_fields'] as $custom) {
         $staffhat = $custom['value'];
     }
 }
+            
+//Disabling custom options?
+foreach ($message['member']['custom_fields'] as $custom) {
+        if ($custom['title'] == "Disable Custom Options") {
+            $disableoptions = $custom['value'];
+        }
+    }
 
 //include("specialplates.php");
 include("nameplates.php");
@@ -404,6 +411,30 @@ if ($message['member']['is_guest'] && ($message['member']['name'] != 'Disembodie
 								echo '<b><a style="color: #F0F8FF;" href="', $scripturl, '?action=profile;u=', $message['member']['id'], '" title="',$message['member']['blurb'],'">';
 							else
 								echo '<b style="color: #EEEEEE;">';
+            
+                            if ($sep7flag == true) {
+								echo '<div class="icon_sep7">&nbsp;</div> ';
+							}
+							
+							if ($proflag == true) {
+								echo '<div class="icon_pro">&nbsp;</div> ';
+							}
+							
+							if ($ambassflag == true) {
+								echo '<div class="icon_ambassador">&nbsp;</div> ';
+							}
+            
+                            if ($grankflag == 1) {
+								echo '<div class="icon_rank1">&nbsp;</div> ';
+							}
+							
+							if ($grankflag == 2) {
+								echo '<div class="icon_rank2">&nbsp;</div> ';
+							}
+							
+							if ($grankflag == 3) {
+								echo '<div class="icon_rank3">&nbsp;</div> ';
+							}
 							
 							if ($modflag == true) {
 								echo '<div class="icon_mod">&nbsp;</div> ';
